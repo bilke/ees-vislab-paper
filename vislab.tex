@@ -1,63 +1,14 @@
-%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This is a general template file for the LaTeX package SVJour3
-% for Springer journals.          Springer Heidelberg 2010/09/16
-%
-% Copy it to a new file with a new name and use it as the basis
-% for your article. Delete % signs as needed.
-%
-% This template includes a few options for different layouts and
-% content for various journals. Please consult a previous issue of
-% your journal as needed.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% First comes an example EPS file -- just ignore it and
-% proceed on the \documentclass line
-% your LaTeX will extract the file if required
-\begin{filecontents*}{example.eps}
-%!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 19 19 221 221
-%%CreationDate: Mon Sep 29 1997
-%%Creator: programmed by hand (JK)
-%%EndComments
-gsave
-newpath
-  20 20 moveto
-  20 220 lineto
-  220 220 lineto
-  220 20 lineto
-closepath
-2 setlinewidth
-gsave
-  .4 setgray fill
-grestore
-stroke
-grestore
-\end{filecontents*}
-%
-\RequirePackage{fix-cm}
-%
-%\documentclass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
 \documentclass[twocolumn]{svjour3}          % twocolumn
-%
-\smartqed  % flush right qed marks, e.g. at end of proof
-%
+
 \usepackage{graphicx}
-%
-% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
-%
-% insert here the call for the packages your document requires
-%\usepackage{latexsym}
-% etc.
 \usepackage{url}
 
-%
-% please place your own definitions here and don't use \def but
-% \newcommand{}{}
-%
+% KR: remove before submitting
+\usepackage{color}
+\usepackage{soul}
+\newcommand{\myedit}[2]{\textcolor{red}{\st{#1}} \textcolor{blue}{#2}}
+\newcommand{\marginnote}[1]{\marginpar{\scriptsize\emph{\textbf{\textcolor{red}{#1}}}\normalsize}}
+
 % Insert the name of "your journal" with
 \journalname{Environmental Earth Sciences}
 %
@@ -70,6 +21,8 @@ grestore
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
 %\titlerunning{Short form of title}        % if too long for running head
+
+
 
 \author{Lars Bilke         \and
         Carolin Helbig     \and
@@ -126,11 +79,9 @@ grestore
 \maketitle
 
 \begin{abstract}
-Scientific visualization plays an important role in understanding data and simulation results. A high-resolution stereoscopic virtual reality (VR) environment is used to help scientists to explore large and complex data sets, to be able to collaborate in workgroups containing people of different backgrounds and to present results of a research project to stakeholders or the public. The requirements for the computing equipment driving the VR environment are forcing us to use specialized software applications which can run in a parallel fashion (clustered) and thus challenging us to find a good data workflow from source data sets onto the display system. Therefore we develop software applications like the \emph{OpenGeoSys Data Explorer} and custom data conversion tools for established visualization packages such as \emph{ParaView} and \emph{VTK}. A presentation of a broad range of visualization case studies prove our workflows. An outlook on how visualization techniques can be deeply integrated into the simulation process is given and future technical improvements such as a simplified hardware setup and useful interaction techniques are outlined.
+Scientific visualization \myedit{plays an important role in understanding data}{is an integral part of the modeling workflow, enabling researchs to understand complex or large data sets} and simulation results. A high-resolution stereoscopic virtual reality (VR) environment \myedit{is used to help scientists to explore large and complex data sets, to be able}{further enhances the possibilities of visualisation. Such an environment also allows} to collaborate in workgroups \myedit{containing}{including} people of different backgrounds and to present results of a research project to stakeholders or the public. The requirements for the computing equipment driving the VR environment \myedit{are forcing us to use}{require} specialized software applications which can \myedit{}{be} run in a parallel fashion (clustered)\myedit{}{(Warum clustered in Klammern? Bau das in den Satz ein.)} \myedit{and thus challenging us to find a good}{Another challange is to devise a useful} data workflow from source data sets onto the display system. Therefore we develop software applications like the \emph{OpenGeoSys Data Explorer} and custom data conversion tools for established visualization packages such as \emph{\myedit{ParaView}{Unity}} and \emph{VTK}. \myedit{A presentation of a broad range of visualization case studies prove our workflows.}{We demonstrate our workflow my presenting visualization results for case studies from a broad range of applications.} An outlook on how visualization techniques can be deeply integrated into the simulation process is given and future technical improvements such as a simplified hardware setup and useful interaction techniques are outlined.
 
 \keywords{Virtual Reality  \and  Visualization  \and  Computer Graphics}
-% \PACS{PACS code1 \and PACS code2 \and more}
-% \subclass{MSC code1 \and MSC code2 \and more}
 \end{abstract}
 
 %%%%%%%%%%
@@ -140,26 +91,34 @@ Scientific visualization plays an important role in understanding data and simul
 \section{Introduction}
 \label{introduction}
 
-The \emph{TESSIN VISLab} is a high-resolution immersive virtual reality (VR) environment and was established in 2008 to face the need of analyzing and working on increasingly complex data sets used to and generated by simulations of natural phenomena in environmental sciences. Typical use cases for this environment are:
+\myedit{}{Hier m\"usste eigentlich noch Motivation hin, wie super wichtig wiss. Visualisierung ist (Wiederholung aus Abstract + ein bisschen mehr + Quellenangaben. Am besten inkl. ein paar VR Dinge.}
+
+\bigskip
+\myedit{}{Der folgende Absatz + die Stichpunktliste k\"onnte evtl schon mit in die n\"achste Section. Nachdem du in der Motivation ein bisschen was zu VR allgemein schreibst, sagst du, dass total viele Leute das schon erkannt haben wie wichtig das ist und dass in x, y und z VR-Zentren aufgebaut wurden. Wir haben auch eins und dann der folgende Absatz und dann der Technical Overview.}
+\bigskip
+
+The \emph{TESSIN VISLab} is a high-resolution immersive virtual reality (VR) environment and was established in 2008 to face the need of analyzing and working on increasingly complex data sets \myedit{used to and}{} generated by simulations of natural phenomena in environmental sciences. Typical use cases for this environment are:
 
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  collaborative discussions in a small group of scientists
+  collaborative discussions in \myedit{a small group}{small groups} of scientists
 \item
   exploring complex data sets
 \item
-  quality checking of data sets
+  \myedit{quality checking}{verifying the quality} of data sets
 \item
-  showing concurrent visualizations of diverse integrated data sets
+  showing concurrent visualizations of \myedit{diverse}{heterogeneous} integrated data sets
 \item
   presenting research results to stakeholders
 \item
-  presenting to the general public such as on open day events
+  \myedit{presenting to}{presentations for} the general public such as on open \myedit{day}{house} events
 \end{itemize}
 
 \subsection{Existing vislabs}
 \label{existing-vislabs}
+
+\myedit{}{Definiere was ein VisLab eigentlich ist! (bzw. Was du hier drunter verstehst)}
 
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
@@ -179,14 +138,14 @@ The \emph{TESSIN VISLab} is a high-resolution immersive virtual reality (VR) env
 \subsection{Technical Overview}
 \label{technical-overview}
 
-The hardware setup of the \emph{VISLab} (TODO figure) uses a back projection-based stereoscopic visualization environment with an approximately 6x3 meter large main screen and extending projections on the floor and two side wings. In order to achieve a high resolution of approximately 6400 by 1800 pixels, 13 projectors are used. Images are generated alternating for the left and the right eye and users wear special glasses which separate these images, resulting in a stereoscopic view. For the stereo separation we can switch between two technologies -- active stereo using shutter glasses and passive stereo using \emph{Infitec} \cite{infitec} technology. We use an optical tracking system, compensating for movement of the observer. Images are computed such that correct perspective is maintained. A pointer device (\emph{Flystick}) allows for interaction with the virtual environment. The rendering is performed using a cluster with 13 workstations (one for each projector) equipped with high-end NVidia graphics boards (GPUs) and situated in a server room aside. The master/server process of the actual application is started on a KVM-terminal (connected to machines in the server room) in front of the display. In addition to the virtual reality capabilities, the \emph{VISLab} can be employed for enhanced multimedia presentations such as the simultaneous display of images, videos and documents.
+The hardware setup of the \emph{\myedit{}{TESSIN} VISLab} (TODO figure) uses a back projection-based stereoscopic visualization environment with an approximately 6x3 meter large main screen and extending projections on the floor and two side wings. In order to achieve a high resolution of approximately 6400 by 1800 pixels, 13 projectors are used. Images are generated alternating for the left and the right eye and users wear special glasses which separate these images, resulting in a stereoscopic view. For the stereo separation we can switch between two technologies -- active stereo using shutter glasses\myedit{}{(Quelle!} and passive stereo using \emph{Infitec} technology~\cite{infitec}\myedit{}{(ggf. Quelle for passiv stereo allgemein)}. We use an optical tracking system, compensating for movement of the observer. Images are computed such that correct perspective is maintained \myedit{}{(Hast du Quellen dazu, wie das funktioniert? Kannst du ggf. Noch ein/zwei S\"atze dazu schreiben?)}. A pointer device (\emph{Flystick}) allows for interaction with the virtual environment. The rendering is performed using a cluster with 13 workstations (one for each projector) equipped with high-end NVidia graphics boards (GPUs) and situated in a server room \myedit{aside}{next to the presentation venue}. The master/server process of the actual application is started on a KVM-terminal\myedit{}{(Was ist das?)} connected to \myedit{}{the} machines in the server room) in front of the display. In addition to the virtual reality capabilities, the \emph{VISLab} can be employed for enhanced multimedia presentations such as the simultaneous display of images, videos and documents.\myedit{}{(Anwendungsbeispiel nennen! Am besten mit Quellenangabe, falls möglich.)}
 
-As of the clustered setup we can only use software which can run in parallel and synchronized. For showing visualizations we use the software packages \emph{VRED}, \emph{ParaView} or Unity in conjunction with \emph{MiddleVR}.
+\myedit{As}{Because} of the clustered setup we can only use software which can run in parallel and \myedit{synchronized}{synchronizes the current state across all involved machines}. For \myedit{showing}{presenting} visualizations we use the software packages \emph{VRED}, \emph{ParaView} or Unity in conjunction with \emph{MiddleVR}. \myedit{}{All of these are introduced in the following:}
 
 \subsection{Mobile VR equipment}
 \label{mobile-vr-equipment}
 
-For off-site presentations such as on conferences, workshops or project partner visits we can utilize mobile equipment to demonstrate the same visualizations as in the \emph{VISLab}. The equipment consists of notebooks with dedicated GPUs and 3D-enabled projectors or head-mounted displays (HMDs) such as the \emph{Oculus Rift}.
+For off-site presentations such as on conferences, workshops or \myedit{project partner visits}{visits to project partners or stakeholders,} we can \myedit{}{also} utilize mobile equipment to demonstrate the same visualizations \myedit{}{projects} as in the \emph{VISLab}. The equipment consists of notebooks with dedicated GPUs and 3D-enabled projectors or head-mounted displays (HMDs) such as the \emph{Oculus Rift}\myedit{}{(Quelle + Bildreferenz)}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/rift.jpg}
@@ -194,27 +153,33 @@ For off-site presentations such as on conferences, workshops or project partner 
 \label{fig:rift}
 \end{figure}
 
+\bigskip
+\myedit{}{Eventuell ist es sinnvoll, Hardware und Software zu trennen und ab hier eine neue Section anzufangen?}
+\bigskip
+
 \subsection{Software}
 \label{software}
 
-The following software is running on our display:
+The following software is \myedit{running}{is employed for running presentations} on our display:
 
 \paragraph{\emph{VRED}}
-is a commercial software by Autodesk (former PI-VR) specialized in photorealistic real-time product rendering running on Windows. It is build on top of OpenSG, an open-source scenegraph library which offers clustered rendering \cite{opensg}. \emph{VRED} can arrange imported 3D objects in a virtual scene, allows for tweaking of material and lighting parameters but is neither a modeling software nor are there many interaction possibilities. It has a plugin interface but no documentation on how to address it. An advantage is that \emph{VRED}'s editor can be directly connected to the \emph{VISLab}'s display so that changes in the scene are visible immediately. \emph{VRED} is installed on the \emph{VISLab} since
-2008.
+is a commercial software by Autodesk (former PI-VR) specialized in photorealistic real-time product rendering running on Windows\myedit{}{(Quelle)}. It is build on top of OpenSG, an open-source scene graph library which offers clustered rendering~\cite{opensg}. \emph{VRED} can arrange imported 3D objects in a virtual scene, allows for tweaking of material\myedit{}{(erkl\"are was ``Material'' in diesem Zusammenhang bedeutet)} and lighting parameters but is neither a modeling software nor are there many interaction possibilities\myedit{(gib Beispiele was es kann, da sonst nicht klar wird, warum wir es \"uberhaupt nutzen)}. It has a plug-in interface but no documentation \myedit{}{is available from (Firma)} on how to address it. An advantage \myedit{}{of the software} is that \emph{VRED}'s editor can be directly connected to the \emph{VISLab}'s display so that \myedit{}{local} changes \myedit{in the scene}{to the scene done at the presentation terminal} are visible immediately \myedit{}{video wall}. \myedit{\emph{VRED} is installed on the \emph{VISLab} since 2008.}{(Warum dieser letzte Satz?)}
 
 \paragraph{\emph{ParaView}} \cite{paraview}
-is an open-source data analysis and visualization software build on top of the \emph{Visualization Toolkit} \cite{vtk} (VTK). Both technologies also play an important in our visualization workflows (see \ref{workflows}). \emph{ParaView} allows to quickly create visualizations and implements a large number of well established visualization algorithms and techniques. It can run on distributed memory architectures to analyze large data sets and to drive VR displays. Using \emph{ParaView} we can modify visualization parameters directly in the VR environment but it lacks more sophisticated interaction and presentation features.
+is an open-source data analysis and visualization software build on top of the \emph{Visualization Toolkit} \cite{vtk} (VTK). Both technologies \myedit{also play an important in our}{are also integrated in our} visualization workflows (see \ref{workflows}). \emph{ParaView} allows to quickly create visualizations and implements a large number of well established visualization algorithms and techniques. It can run on distributed memory architectures to analyze large data sets and to drive VR displays. Using \emph{ParaView,} we can modify visualization parameters directly in the VR environment. \myedit{but}{Unfortunately,} it lacks more sophisticated interaction and presentation features.
 
-\paragraph{Unity}
-is a complete game engine by Unity Technologies. It comes in a free and a commercial editor variant. Unity has several rendering backends (e.g.~OpenGL, OpenGL ES, DirectX) so it can be run on all major platforms as well as on the Web (with an additional browser plugin). From the first Unity does not provide any interaction functionality but it has a comprehensive scripting documentation and a vivid plugin community so that it is very easy to get started. Application testing can be done directly in the Unity editor by tweaking the application at runtime. However Unity created applications cannot run in a clustered environment. Therefore \emph{MiddleVR} is used.
+\paragraph{\emph{Unity}}
+is a complete game engine by Unity Technologies\myedit{}{(Quelle)}. It \myedit{comes}{is available} in a free and a commercial editor variant \myedit{}{(Unterschiede?)}. \emph{Unity} has several rendering backends (e.g.~OpenGL, OpenGL ES, DirectX)\myedit{}{(Quellen?)} so it can be run on all major platforms as well as on the Web (with an additional browser plug-in). \myedit{From the first Unity}{\emph{Unity}'s basic scope of operation} does not \myedit{provide}{include} any interaction functionality but it has a comprehensive scripting documentation and a vivid plugin community so that it is very easy to \myedit{get started}{integrate missing features}. Application testing can be done directly in the \emph{Unity} editor by tweaking the application at runtime. However, \emph{Unity} created applications cannot run in a clustered environment. Therefore \emph{MiddleVR} is used.
 
 \paragraph{MiddleVR}
-is a generic virtual reality middleware from \emph{i'm in VR} designed to work with different 3D applications. It features a graphical configuration tool to setup VR systems in a software independent way. It handles interaction devices, stereoscopic rendering and clustering. Then this configuration is used in a Unity plugin to enable all these features in a Unity application. The \emph{MiddleVR} enabled Unity application is VR system agnostic, once compiled it can be run on any VR system supported by \emph{MiddleVR}. A disadvantage of this approach is that the final application is not run inside the Unity editor but standalone so that it cannot be altered interactively. The fact that a recompilation of the application takes just a few seconds weakens that drawback. \emph{MiddleVR} is installed on the \emph{VISLab} since 2014.
+is a generic virtual reality middleware from \emph{i'm in VR} designed to work with different 3D applications\myedit{}{(Quelle)}. It features a graphical configuration tool to setup VR systems \myedit{in a software independent way}{independent of specific software}. It \myedit{handles}{implements} interaction devices, stereoscopic rendering and clustering \myedit{}{when using software not supporting this functionality}. \myedit{Then this}{The \emph{MiddleVR}} configuration is \myedit{}{then} used in a Unity plugin to enable all these features in \myedit{a}{} Unity applications. The \emph{MiddleVR}-enabled Unity application is VR system agnostic, once compiled it can be run on any VR system supported by \emph{MiddleVR}. A disadvantage of this approach is that the final application \myedit{is not}{cannot be} run inside the Unity editor but stand-alone, so that it cannot be altered interactively \myedit{}{at runtime}. The fact that a recompilation of the application takes just a few seconds weakens that drawback. \myedit{\emph{MiddleVR} is installed on the \emph{VISLab} since 2014.}{(Warum?)}
 
-For the future we will focus on the use of Unity for highly interactive presentations of visualizations as a platform to explain complex circumstances and to help discussing methologies. For rapid prototyping and exploration of visualizations \emph{ParaView} is very useful.
+For the future, we will focus on the use of Unity as a platform for highly interactive \myedit{presentations of visualizations and to explain complex circumstances and to help discussing methologies.}{visualizations to illustrate and discuss complex phenomena.} \myedit{}{In contrast, ParaView is more suited} For rapid prototyping and exploration of \myedit{visualizations \emph{ParaView} is very useful}{complex data sets}.
 
-As alternatives to software with native cluster rendering capabilities there are middlewares which intercepts graphic commands from a desktop application and redistributes them to a render cluster such as Techviz\footnote{Techviz: \url{http://www.techviz.net/products/techviz-xl-driver/}} or Conduit\footnote{Conduit: \url{http://www.mechdyne.com/conduit.aspx}}. Such middleware software allow to run a regular 3D desktop application in a VR environment with stereoscopy and tracking enabled. A data conversion is not necessary but interaction and presentation techniques are limited by the desktop application and performance is lost during graphic commands interception and distribution to the cluster.
+\myedit{}{Der letzte Absatz hier drunter passt hier irgendwie nicht hin. Vielleicht könntest du das besser weiter vorn als prinzipiell andere M\"oglichkeit f\"ur VR einf\"ugen?}
+
+As alternatives to software with native cluster rendering
+capabilities there are middlewares which intercept graphic commands from a desktop application and redistribute them to a render cluster such as Techviz\footnote{Techviz: \url{http://www.techviz.net/products/techviz-xl-driver/}}\myedit{}{(Springer mag keine Fussnoten, mach mal eine Quellenangabe draus.)} or Conduit\footnote{Conduit: \url{http://www.mechdyne.com/conduit.aspx}}. Such middleware software \myedit{}{products} allow to run a regular 3D desktop application in a VR environment with stereoscopy and tracking enabled. A data conversion is not necessary \myedit{}{for this setup} but interaction and presentation techniques are limited by the desktop application \myedit{}{employed} and performance is lost during graphic commands interception and distribution to the cluster \myedit{}{such that immersion and feedback are severely affected}.
 
 \subsection{Workflows}
 \label{workflows}
@@ -223,12 +188,16 @@ TODO Datenquellen
 
 TODO Simulation software OpenGeoSys \cite{kolditz:ogs}
 
-As the foundation for our visualizations we use \emph{VTK} which is integrated into our in-house developed \emph{OGS Data Explorer} framework \cite{rink:eesenvirvis} as well as \emph{ParaView}.
+\myedit{}{(F\"ur m\"ogliche Datenquellen kannste was aus meinem WESS paper nehmen, ein paar S\"atze zu OGS kannst auch entweder aus einem meiner Paper oder aus Agnes' Tutorial Buch nehmen.)}
 
-We provide conversion tools and \emph{ParaView} plugins to adapt \emph{VTK} visualization data to formats needed for the display in the \emph{VISLab} such as OpenSG for \emph{VRED} \cite{bilke:vtkosgconverter} and Autodesk FBX for Unity \cite{bilke:vtkfbxconverter}. Conversion can be done manually in the \emph{OGS Data Explorer} as well as in an automated way with \emph{ParaView}'s Python scripting interface which can be useful especially when converting time series data. During conversion meta data is appended to the data sets to include information not necessarily supported in FBX such as which shader setup to use or time stepping information. The meta data is evaluated when loading the data into Unity and can be queried, e.g.~for displaying the time stepping information as a text overlay. Multiple data sets can be arranged both in a spatial but also in a temporal context. Viewing positions and camera animations can be predefined. Additionally we implemented functionality in Unity to fade in/out data sets, to select subsets, \ldots{} TODO \ldots{}
+As \myedit{the foundation for our}{a basis for creating} visualizations we \myedit{use}{employ} \emph{VTK} which is \myedit{}{also} integrated into \myedit{our in-house developed}{the} \emph{OGS Data Explorer} framework \cite{rink:eesenvirvis} \myedit{}{in our group/department(?)} as well as \emph{ParaView}.
+
+We provide \myedit{conversion tools}{utilities} and \emph{ParaView} plugins to \myedit{adapt}{convert} \emph{VTK} visualization data to formats \myedit{needed for the display in the \emph{VISLab} such as}{supported by the VR frameworks used in the \emph{TESSIN VISLab}, i.e.} OpenSG for \emph{VRED}~\cite{bilke:vtkosgconverter} and Autodesk FBX for Unity~\cite{bilke:vtkfbxconverter}. Conversion can be \myedit{}{either} done manually in the \emph{OGS Data Explorer} \myedit{as well as in an automated way with}{or in a batch process by employing} \emph{ParaView}'s Python scripting interface. \myedit{which can be useful especially when converting time series data}{The second approach is especially useful when converting large sequences of complex data sets such as time steps of simulation results from transient finite element models}. During conversion, meta data is appended to the data sets to include information not necessarily supported in FBX such as \myedit{which}{a specific} shader setup \myedit{to use}{} or time stepping information. This meta data is evaluated when loading the data sets into Unity and can be queried, e.g.~for displaying the time stepping information as a text overlay. Multiple data sets can be arranged both in a spatial but also in a temporal context\myedit{}{(Das ist relativ abstrakt, das k\"onnte man noch ausformulieren\dots falls du Lust hast.}. Viewing positions and camera animations can be predefined. Additionally we implemented functionality in Unity to fade in/out data sets, to select subsets, \ldots{} TODO \ldots{}\myedit{}{(Alternativ k\"onntest du auf unser Vis-paper verweisen, wo wir das schonmal ein wenig ausf\"uhrlicher beschreiben.)}
 
 \section{Overview of VISLab Applications}
 \label{overview-of-VISLab-applications}
+
+\myedit{}{Ich w\"urde die Subsection-\"Uberschriften weglassen (die sind ohnehin sehr willk\"urlich) und die Subsubsections zu Subsections machen. Du kannst das ganze ja trotzdem sinnvoll anordnen, so dass das thematisch einen fliessenden übergang gibt\dots}
 
 \subsection{Hydrology and Climate}
 \label{hydrology-and-climate}
@@ -251,7 +220,7 @@ Benny Selle
 
 Carolin Helbig
 
-Climate change is one of the world's biggest challenges for the future. To predict these changes, meteorologists proceed in developing models that simulate the state of the atmosphere for a period of time. With an increasing of computational power, even the complexity of these models and their spatial resolution rises and produces large data sets with numerous variables (e.g.~wind, mass fraction). Scientific visualization is an essential medium to explore, analyze and present these data sets. Figure \ref{fig:wind} shows an example of a subset of a simulation domain, where we visualized wind field, mass fraction, humidity and heat fluxes above the digital elevation model. The visualization is used to provide a detailed look at processes and investigate if they have been captured correctly by the model. With the help of animation, the different timesteps are displayed and the user can analyze the development of convection and observe heat transports, for instance. The challenge of these data sets is their highly multivariate character that demands stereoscopic 3D visualization to analyze it. The visual combination of simulation, observation, and statical data, which differ in their spatial and temporal resolution, supports the scientists to verify, falsify and generate their hypothesis. \cite{helbig:eesenvirvis}
+Climate change is one of the world's biggest challenges for the future. To predict these changes, meteorologists proceed in developing models that simulate the state of the atmosphere for a period of time. With an increasing of computational power, even the complexity of these models and their spatial resolution rises and produces large data sets with numerous variables (e.g.~wind, mass fraction). Scientific visualization is an essential medium to explore, analyze and present these data sets.\myedit{}{Sowas in der Art sollte bei dir in der Introduction stehen und dann hier nicht nochmal auftauchen. Daf\"ur fehlen hier noch ein/zwei S\"atze, was das \"uberhaupt f\"ur eine case study ist, warum die gemacht wurde, etc.)} Figure \ref{fig:wind} shows an example of a subset of a simulation domain, where we \myedit{}{concurrently} visualized wind field, mass fraction, humidity and heat fluxes \myedit{above}{in relation to} the digital elevation model. The visualization is used to provide a detailed look at processes \myedit{}{(welche?)} and investigate if they have been captured correctly by the model. With the help of animation, the different timesteps are displayed and the user can analyze the development of convection and observe heat transports, for instance. The challenge of these data sets is their highly multivariate character that \myedit{demands}{requires} stereoscopic 3D visualization to \myedit{analyze it}{for analysis}. The visual combination of simulation, observation, and statical data, which differ in their spatial and temporal resolution, supports the scientists to verify, falsify and generate their hypothesis~\cite{helbig:eesenvirvis}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/wind.jpg}
@@ -286,8 +255,8 @@ Marc Walther
 \label{fig:oman}
 \end{figure}
 
-Using numerical models for the assessment of current and future states of real world applications, aiding in the evaluation of various management options, has become a standard - not only in environmental sciences. Proper tools are needed to visualize the data properly for analyzing and investigating measurements and modeling results. With nowadays increasing density of available data and concurrently more and more detailed model setups, this need has grown strongly. This trend is also expressed through the ascending number of recent publications ( TODO TKs Saudi Arabien Model, \cite{sun:ees}, \cite{helbig:envirvis}) and the increasing scientific awareness of this circumstance during conferences (eg. EnvirVis as part of EuroVis). One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities (\cite{walther:cam} \& \cite{walther:eesenvirvis}). Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation \cite{walther:modelcare}. Secondly, large datasets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was
-utilized.
+Using numerical models for the assessment of current and future states of real world applications, aiding in the evaluation of various management options, has become a standard -- not only in environmental sciences. Proper tools are needed to visualize the data properly for analyzing and investigating measurements and modeling results. With nowadays increasing density of available data and concurrently more and more detailed model setups, this need has grown strongly.\myedit{}{(Die letzten zwei/drei S\"atze sind wieder allg. Bemerkungen. Sowas sollte in deiner Intro stehen und hier nicht nochmal.)} This trend is also expressed through the ascending number of recent publications ( TODO TKs Saudi Arabien Model, \cite{sun:ees}, \cite{helbig:envirvis}) and the increasing scientific awareness of this circumstance during conferences (eg. EnvirVis as part of EuroVis).\myedit{}{(Das geh\"ort hier alles nicht rein. Wenn schon allg. Bla-bla, dann lieber irgendwas zu Wassermanagement in ariden Gebieten oder so.)} One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities (\cite{walther:cam} \& \cite{walther:eesenvirvis}). Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation \cite{walther:modelcare}. Secondly, large datasets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was
+utilized.\myedit{}{(Verweis auf Marc's Vis-Paper!)}
 
 \subsubsection{TERENO-Bode}\label{tereno-bode}
 
@@ -297,6 +266,7 @@ Karsten Rink
 Flow}\label{saudi-arabia---groundwater-flow}
 
 Thomas Kalbacher \cite{zehner:modelcare} and \cite{rink:modelcare}
+\myedit{}{Hat nix mit ModelCare zu tun, sondern mit dem IWAS Paper. ModelCare war Agnes' Region.}
 
 \subsubsection{Streambed}\label{streambed}
 
@@ -338,6 +308,8 @@ Bj\"orn Zehner
 \subsection{Landscape and Biodiversity}
 \label{landscape-and-biodiversity}
 
+\myedit{}{Die \"Uberschrift w\"urde ich wieder rausnehmen. Den untenstehenden Satz kannst du trotzdem nutzen, um auf eine andere Gruppe von Case Studies \"uberzuleiten.}
+
 Many man-made actions have an impact on landscapes as well as to biodiversity surrounding us and this should be communicated to and discussed with the public, so that people are aware of this fact. Virtual Environments are very well suited for the integration and visualization of various data within a unique geographic context for discussion and decision making of different options (TODO Zehner 2010).
 
 \subsubsection{Biodiversity in Rain Forests}
@@ -361,7 +333,7 @@ Bj\"orn Zehner
 
 Lars Bilke, TODO put on GitHub and DOI
 
-To help in the creation of urban environment visualizations usable for social sciences and for urban development a procedural \cite{procedural:modelling} building model generator was developed \cite{bilke:master}. The software called \emph{CityGenerator} \cite{bilke:citygenerator} allows to procedurally generate building models as well as small city scenes out of simple building blocks like faÃ§ade textures, doors, windows and decoration elements. The user can specify input parameters such as the building footprint, building height and designs a template faÃ§ade in a graphical user interface. The template faÃ§ade is defined by set of grammatic rules \cite{procedural:buildings}. The actual model generation is implemented as a \emph{VRED}-plugin allowing for immediate presentation in the \emph{VISLab}. \emph{Level-of-detail} (LOD) techniques ensure a good performance also on larger scenes.
+To help in the creation of urban environment visualizations usable for social sciences and for urban development a procedural building model generator was developed \cite{bilke:master, procedural:modelling}. The software called \emph{CityGenerator}~\cite{bilke:citygenerator} allows to procedurally generate building models as well as small city scenes out of simple building blocks such as fa\c{c}ade textures, doors, windows and decoration elements. The user can specify input parameters including the building footprint, building height and designs a template fa\c{c}ade in a graphical user interface. This template fa\c{c}ade is defined by a set of grammatic rules~\cite{procedural:buildings}. The actual model generation is implemented as a \emph{VRED}-plugin allowing for immediate presentation in the \emph{VISLab}. \emph{Level-of-detail} (LOD) techniques ensure a good performance of larger scenes.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/city.jpg}
@@ -372,25 +344,35 @@ To help in the creation of urban environment visualizations usable for social sc
 \section{Future work}
 \label{future-work}
 
-For the future we want to integrate new visualization techniques to better incorporate scientific visualization in the daily research work, especially into high-performance computing (HPC). To achieve these goals we will integrate visualization methods into simulation codes and simplify the technical setup to unlock more fields of applications.
+\myedit{}{(\"Uberarbeite die n\"achsten zwei S\"atze nochmal, die sind derzeit sehr vage, zusammenhanglos und teilweise irref\"uhrend.)}
+For the future we \myedit{want}{would like} to integrate new visualization techniques to better incorporate scientific visualization in the daily research work, especially into high-performance computing (HPC). To achieve these goals we will integrate visualization methods into simulation codes and simplify the technical setup to unlock more fields of applications.
 
 \subsection{In-situ visualization}
 \label{in-situ-visualization}
 
-In-situ or Co-visualization allows to create result analysis and visualization as a part and during the simulation process. HPC systems are getting more processing power, more memory and more communication bandwidth every year. But not all of these capacities are growing at an equal rate. Especially communication bandwidth can be the limiting factor in various applications.
+In-situ or Co-visualization allows to create result analysis and visualization as a part \myedit{and during}{of} the simulation process. \myedit{}{(Wieder so ein Sprung, die beiden S\"atze haben nix miteinander zu tun.)} HPC systems are getting more processing power, more memory and more communication bandwidth every year. But not all of these capacities are growing at an equal rate. Especially communication bandwidth can be the limiting factor in various applications.
 
-Normally the simulation process is tripartite: in the \emph{preprocessing} the model of the simulation gets defined and all input data gets prepared for the simulation run. Typically the \emph{simulation} step produces large amounts of result data which are then processed and analyzed in the \emph{postprocessing} step. Usually the postprocessing takes place on frontend-nodes of the HPC system or on the users PC and storage capacity may be limited. In the latter case all result data have to be transfered over the computer network. The analysed data as the outcome of the postprocessing step is much smaller than the simulation result data. Therefore the postprocessing should become integrated into the simulation itself to avoid the communication bottleneck and to transfer the analyzed data only.
+Normally the simulation process is tripartite:\myedit{}{(Das stimmt imo nicht ganz, es sollten vier Teile sein: Pre-proc, model setup, simulation, post-proc)} in the \emph{preprocessing} \myedit{part,} the model of the simulation gets defined and all input data gets prepared for the simulation run. Typically the \emph{simulation} step produces large amounts of result data \myedit{(Das ist wieder sehr unspecifisch. Das müsste man ausführlicher schreiben, am besten mit ein paar buzz-words wie transient, coupled, multi-parameter, etc.)} which are then processed and analyzed in the \emph{postprocessing} step \myedit{(Auch wieder nur so halbrichtig\dots die Daten werden ja nicht einfach prozessiert, sondern man wendet ja gezielt Filter/Transformationen an, um die interessanten Aspekte sichtbar zu machen.)}. Usually the postprocessing takes place on frontend-nodes of the HPC system or on the users PC and storage capacity may be limited. In the latter case all result data have to be transfered over the computer network. The analysed data as the outcome of the postprocessing step is much smaller than the simulation result data \myedit{(Mit solchen Aussagen w\"are ich auch vorsichtig.)}. Therefore the postprocessing should become integrated into the simulation itself to avoid the communication bottleneck and to transfer the analyzed data only.
 
-We will use the library \emph{Catalyst}\footnote{Catalyst: \url{http://catalyst.\emph{ParaView}.org}} for integration into \emph{OpenGeoSys}. \emph{Catalyst} is an extension of the Visualization Toolkit (VTK) / \emph{ParaView}. On the basis of a representative example data set the user defines a visualization pipeline (either by a script or interactively in \emph{ParaView}) which is then executed after defined time step intervals of the simulation. During simulation time the user gets processed data as a result of the visualization pipeline, images of the visualization and an interactive remote visualization in \emph{ParaView}.
+\myedit{}{(Meine Argumentation w\"are eher, dass man schon zur Simulationszeit sehen will, ob sich der Prozess plausibel entwickelt. Daf\"ur kann man eine processing-pipeline definieren, die auf jeden Ausgabeschritt die gleichen (Filter-)Methoden anwendet, so dass man instant das Ergebnis sieht, das einen interessiert. So ungef\"ahr, was du im n\"achsten Abschnitt beschreibst, aber mit ein paar einf\"uhrenden S\"atzen und etwas ausf\"uhrlicher.)}
 
-Furthermore it should be possible to view the live visualization in the VR environment of the TESSIN \emph{VISLab} which is also connected to the EVE HPC system of the UFZ.
+We will use the library \emph{Catalyst}\footnote{Catalyst: \url{http://catalyst.paraview.org}}\myedit{}{(als Quelle!)} for integration \myedit{}{of such an in-situ visualization} into \emph{OpenGeoSys}. \emph{Catalyst} is an extension of the Visualization Toolkit (VTK)\myedit{ / \emph{ParaView}}{}. On the basis of a representative example data set the user defines a visualization pipeline (either by a script or interactively in \emph{ParaView}) which is then executed after defined time step intervals of the simulation. During simulation time the user gets processed data as a result of the visualization pipeline, images of the visualization and an interactive remote visualization in \emph{ParaView}.
 
-By observing the simulation process it is possible to detect errors in the input data early. The user can then cancel the simulation, adapt the input data and restart the simulation. This conducts to savings in compute and work time and to an effective iterative process of refining and adapting the simulation. Because the in-situ visualization can be run without user interaction it is also useful for software quality management and benchmarking. Comparing visualization output and analyzed data between different program versions can be very helpful to detect errors in the code.
+Furthermore it should be possible to view the live visualization in the VR environment of the TESSIN \emph{VISLab} which is also connected to the EVE HPC system of the UFZ. \myedit{}{(Wenn du auf EVE verweisst, brauchst du entweder eine Quelle oder musst erkl\"aren, was das ist. Du k\"onntest auch nur allg. etwas von einem computing cluster schreiben. Das UFZ wird hier auch erstmalig erw\"ahnt, das willst du vielleicht auch entweder eher schonmal machen (Intro) oder ganz weglassen.)}
+
+\myedit{}{(Das folgende w\"urde ich auf jeden Fall als Motivation f\"ur das ganze in-situ Zeugs vorziehen!)}
+By observing the simulation process it is possible to detect errors in the input data early. The user can then cancel the simulation, adapt the input data and restart the simulation. This \myedit{conducts to savings in compute and work time}{saves computational time and the decreases the workload of scientists} and \myedit{}{(Das folgende versteh ich wieder nicht)} to an effective iterative process of refining and adapting the simulation. Because the in-situ visualization can be run without user interaction, it is also useful for software quality management and benchmarking\myedit{}{(Quelle?)}. Comparing visualization output and analyzed data between different program versions can be very helpful to detect errors in the code. \myedit{}{(oder in der Simulation!)}
 
 \subsection{Simplified hardware setup}
 \label{simplified-hardware-setup}
 
-Our current hardware setup limits the usable 3D applications to those which can run in parallel and synchronized on a computer cluster. This rules out the usage of commonly used software such as geographic information systems (GIS). Novel high resolution projectors can help us to reduce the number of projectors for our display from 13 to 8 in which the main screen is driven by one 4K projector instead of six SXGA projectors. This allows the usage of every 3D enabled application when disclaiming the projection on the ground and side screens. The technical implementation is currently under review.
+Our current hardware setup limits the usable 3D applications to \myedit{those}{software} which can be run in parallel and synchronized on a computer cluster. This rules out the usage of commonly used software \myedit{}{in environmental sciences} such as geographic information systems (GIS). Novel high resolution projectors can help us to reduce the number of projectors for our display from 13 to 8 in which the main screen is driven by one 4K projector instead of six SXGA projectors. This allows the usage of every 3D enabled application when disclaiming the projection on the ground and side screens. The technical implementation is currently under review. \myedit{}{(Den letzten Absatz solltest du noch etwas ausformulieren, das steht momentan etwas verloren am Ende.)}
+
+\bigskip
+\myedit{}{Du solltest vermutlich noch ein Acknowledgement einf\"ugen, in dem du auf die Danksagungen in den jeweiligen Papern verweisst. Damit sich niemand vergessen f\"uhlt\dots}
+
+\bigskip 
+\myedit{}{Anmerkung zu den Referenzen: Ich pers\"onlich mache es immer so, dass nur bei Papern mit max. 4 Autoren auch wirklich alle hinschreibe. Bei mehr Autoren schreibe ich nur die ersten drei und dann ``and others'' (das wird im Paper dann zu ``et al''). Das wird von vielen Konferenzen und Journals so gefordert, bei Springer aber nicht, du kannst es also machen, wie du willst. Ich finde das nur \"ubersichtlicher. Ausserdem: Wenn du für einen Artikel Volume, Nummer und Seitenzahl angeben kannst, kannst du die DOI weglassen, das ist dann redundant.}
 
 %%%%%%%%%%%%%
 %% ENDCONTENT
