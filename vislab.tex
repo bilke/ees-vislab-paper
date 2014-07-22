@@ -36,7 +36,6 @@
         Benny Selle        \and
         Alexander Singer   \and
         Feng Sun           \and
-        Nico Trauth        \and
         Marc Walther       \and
         Norihiro Watanabe  \and
         Bj\"orn Zehner     \and
@@ -47,7 +46,7 @@
 
 \institute{L. Bilke \and T. Fischer \and C. Helbig \and T. Kalbacher \and O. Kolditz \and
            Dmitry Naumov \and Karsten Rink \and Agnes Sachse \and Alexander Singer
-           \and Nico Trauth \and Marc Walther \and Norihiro Watanabe \at
+           \and Marc Walther \and Norihiro Watanabe \at
               Department of Environmental Informatics, \\
               Helmholtz Centre for Environmental Research, \\
               Leipzig, Germany, \\
@@ -191,15 +190,7 @@ We provide utilities and \emph{ParaView} plugins to convert \emph{VTK} visualiza
 \section{Overview of VISLab Applications}
 \label{overview-of-VISLab-applications}
 
-\myedit{}{Ich w\"urde die Subsection-\"Uberschriften weglassen (die sind ohnehin sehr willk\"urlich) und die Subsubsections zu Subsections machen. Du kannst das ganze ja trotzdem sinnvoll anordnen, so dass das thematisch einen fliessenden übergang gibt\dots}
-
-\subsection{Hydrology and Climate}
-\label{hydrology-and-climate}
-
-The challenge for visualization in hydrology and climate research is the integration of a large variety of heterogeneous data from different sources at multiple spatial and temporal scales (Rink et al. 2012).
-
-
-\subsubsection{Ammer Catchment}
+\subsection{Ammer Catchment}
 \label{ammer-catchment}
 % KR: Ich wuerde Ammer *vor* Western Dead Sea erklaeren, weil beides steady-state GW-models sind, aber die Ammer-Geschichte "einfacher" ist, d.h. bei WDS kommen zumindestest einige Dinge hinzu, so dass man es besser rechtfertigen kann, dass beide Modelle hier im Paper erklaert werden.
 
@@ -207,18 +198,18 @@ The catchment of the river Ammer in southwest Germany has been selected as the s
 
 The finite-element groundwater model is based on a digital elevation model with a resolution of 100\,m in combination with interpolated subsurface layers based on the stratigraphic data of over 100 boreholes. For simulation purposes, the subsurface information has been combined into four separate layers, consisting of a partly karstified limestone aquifer overlaid by Keuper-layers. In addition, the scene includes the stream network and groundwater production wells, which are employed as boundary conditions for the model as well as raster data with groundwater recharge information. Based on the results of a steady-state groundwater recharge simulation, the presentation also includes iso-surfaces representing the groundwater head as well as stream tracers for the visualization of flow paths within the catchment. See Selle et al~\cite{selle:wessti} for more information on the groundwater study and Rink et al~\cite{rink:wessti} for model setup and data visualization.
 
-\subsubsection{Western Dead Sea - Sustainable Management of Water in Arid and Semi-Arid
+\subsection{Western Dead Sea - Sustainable Management of Water in Arid and Semi-Arid
 Regions}
 \label{western-dead-sea---sustainable-management-of-water-in-arid-and-semi-arid-regions}
 
 Agnes Sachse \cite{graebe:modelcare}
 
-\subsubsection{Climate Data}
+\subsection{Climate Data}
 \label{climate-data}
 
 Carolin Helbig
 
-\myedit{}{Sowas in der Art sollte bei dir in der Introduction stehen und dann hier nicht nochmal auftauchen. Daf\"ur fehlen hier noch ein/zwei S\"atze, was das \"uberhaupt f\"ur eine case study ist, warum die gemacht wurde, etc.)} Figure \ref{fig:wind} shows an example of a subset of a simulation domain, where we concurrently visualized wind field, mass fraction, humidity and heat fluxes in relation to the digital elevation model. The visualization is used to provide a detailed look at processes \myedit{}{(welche?)} and investigate if they have been captured correctly by the model. With the help of animation, the different time steps are displayed and the user can analyze the development of convection and observe heat transports, for instance. The challenge of these datasets is their highly multivariate character that requires stereoscopic 3D visualization for analysis. The visual combination of simulation, observation, and statical data, which differ in their spatial and temporal resolution, supports the scientists to verify, falsify and generate their hypothesis~\cite{helbig:eesenvirvis}.
+\myedit{}{Daf\"ur fehlen hier noch ein/zwei S\"atze, was das \"uberhaupt f\"ur eine case study ist, warum die gemacht wurde, etc.)} Figure \ref{fig:wind} shows an example of a subset of a simulation domain, where we concurrently visualized wind field, mass fraction, humidity and heat fluxes in relation to the digital elevation model. The visualization is used to provide a detailed look at processes \myedit{}{(welche?)} and investigate if they have been captured correctly by the model. With the help of animation, the different time steps are displayed and the user can analyze the development of convection and observe heat transports, for instance. The challenge of these datasets is their highly multivariate character that requires stereoscopic 3D visualization for analysis. The visual combination of simulation, observation, and statical data, which differ in their spatial and temporal resolution, supports the scientists to verify, falsify and generate their hypothesis~\cite{helbig:eesenvirvis}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/wind.jpg}
@@ -226,12 +217,12 @@ Carolin Helbig
 \label{fig:wind}
 \end{figure}
 
-\subsubsection{Pore-Scale}
+\subsection{Pore-Scale}
 \label{pore-scale}
 
 Dmitry Naumov
 
-\subsubsection{Nankou}
+\subsection{Nankou}
 \label{nankou}
 
 Feng Sun \cite{sun:ees}
@@ -242,7 +233,7 @@ Feng Sun \cite{sun:ees}
 \label{fig:nankou}
 \end{figure}
 
-\subsubsection{Oman - Saltwater Intrusion}
+\subsection{Oman - Saltwater Intrusion}
 \label{oman---saltwater-intrusion}
 
 Marc Walther
@@ -253,15 +244,15 @@ Marc Walther
 \label{fig:oman}
 \end{figure}
 
-\myedit{}{(Das geh\"ort hier alles nicht rein. Wenn schon allg. Bla-bla, dann lieber irgendwas zu Wassermanagement in ariden Gebieten oder so.)} One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities~\cite{walther:cam, walther:eesenvirvis}. Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation~\cite{walther:modelcare}. Secondly, large datasets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was utilized~\cite{walther:eesenvirvis}.
+\myedit{}{(Wenn schon allg. Bla-bla, dann lieber irgendwas zu Wassermanagement in ariden Gebieten oder so.)} One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities~\cite{walther:cam, walther:eesenvirvis}. Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation~\cite{walther:modelcare}. Secondly, large datasets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was utilized~\cite{walther:eesenvirvis}.
 
-\subsubsection{TERENO-Observatory Harz/Central German Lowlands}\label{tereno-bode}
+\subsection{TERENO-Observatory Harz/Central German Lowlands}\label{tereno-bode}
 
 TERENO is a large-scale project aims to catalogue the longterm ecological, social and economic impact of global change at regional level~\cite{zacharias:tereno}. Four areas in Germany have been selected and are now heavily instrumented to allow extensive studies and simulations for researchers from different disciplines. Hydrogeological analysis in central Germany is being conducted in the catchment of the River Bode with a size of 3,100\,km\textsuperscript{2}. Within that area a number of intensive test sites have been selected, ranging in size from a small area of about one hectare, concerned with assessment of water balance in a forested region, to the complete catchment of one of the Bode's tributaries with a size of over 450\,km\textsuperscript{2} where hydrological processes in the stream as well as in the hyporheic zone are investigated~\cite{schmidt:selke, trauth:flow}.
 
 The presentation consists of over $70$ heterogeneous data sets of different scale and resolution. Most notable are surface representations, consisting of a terrain model of the whole region with over 1 mio triangles with a max edge length of 30\,m. Terrain models of the intensive test sites also exist at a much finer resolution, ranging from 30\,m for the larger regions to just 1\,m for the regions covering 1\,km\textsuperscript{2} or less. Various color transfer functions or textures can be applied to these surfaces, including elevation information, soil moisture, or indication of land use. While textures are originating from raster data, transfer functions are based on statistical data or look-up tables. Geometrical information includes the courses of streams at various resolutions and displayed with different prominence. Furthermore, the scene includes climate stations, measurement networks, bathymetries of some of the larger water bodies within the region, structural models for the subsurface of two intensive test sites, borehole data and much more. Most regional data sets are only visible when the presentation zooms in on the intensive test site they are located in, to avoid unnecessary clutter of the overall scene. Still, data integration of so many data sets acquired by different means is quite challenging. A number of different preprocessing steps were required for concurrent display and visibility of small data sets within the larger context~\cite{rink:wessti, rink:eesenvirvis}.
 
-\subsubsection{Saudi-Arabia - Groundwater
+\subsection{Saudi-Arabia - Groundwater
 Flow}\label{saudi-arabia---groundwater-flow}
 
 Thomas Kalbacher \cite{zehner:modelcare, rink:iwas}
@@ -273,16 +264,15 @@ Thomas Kalbacher \cite{zehner:modelcare, rink:iwas}
 \label{fig:streambed}
 \end{figure}
 
-\subsection{Geosciences and Energy}\label{geosciences-and-energy}
 
-In geosciences we have to deal with complex geological structures containing different architectural elements such as layers, faults, diapirs, fracture networks. Thermo-hydro-mechanical-chemical processes under extreme thermodynamic conditions have to be considered for utilizing geological reservoirs, e.g.~for geothermal energy (Zehner et al. 2010).
-
-\subsubsection{Gro{\ss}-Sch\"onebeck - Geothermal Energy}
+\subsection{Gro{\ss}-Sch\"onebeck - Geothermal Energy}
 \label{grouss-schoenebeck---geothermal-energy}
 
 Norihiro Watanabe
 
-\subsubsection{Otway-Basin - CO2-Storage}
+In geosciences we have to deal with complex geological structures containing different architectural elements such as layers, faults, diapirs, fracture networks. Thermo-hydro-mechanical-chemical processes under extreme thermodynamic conditions have to be considered for utilizing geological reservoirs, e.g.~for geothermal energy~\cite{zehner:uncertainty}
+
+\subsection{Otway-Basin - CO2-Storage}
 \label{otway-basin---co2-storage}
 
 Jennifer Ziesch
@@ -295,19 +285,12 @@ A data conversion tool for seismic data was developed~\cite{bilke:simpleseismicr
 \label{fig:seismic}
 \end{figure}
 
-\subsubsection{Thuringia Basin - Faults}
+\subsection{Thuringia Basin - Faults}
 \label{thuringia-basin---faults}
 
 Thomas Fischer, Dmitry Naumov
 
-\subsection{Landscape and Biodiversity}
-\label{landscape-and-biodiversity}
-
-\myedit{}{Die \"Uberschrift w\"urde ich wieder rausnehmen. Den untenstehenden Satz kannst du trotzdem nutzen, um auf eine andere Gruppe von Case Studies \"uberzuleiten.}
-
-Many man-made actions have an impact on landscapes as well as to biodiversity surrounding us and this should be communicated to and discussed with the public, so that people are aware of this fact. Virtual Environments are very well suited for the integration and visualization of various data within a unique geographic context for discussion and decision making of different options (TODO Zehner 2010).
-
-\subsubsection{Biodiversity in Rain Forests}
+\subsection{Biodiversity in Rain Forests}
 \label{biodiversity-in-rain-forests}
 
 Andreas Huth Formind \cite{kohler:98}
@@ -318,15 +301,15 @@ Andreas Huth Formind \cite{kohler:98}
 \label{fig:biodiversity}
 \end{figure}
 
-\subsubsection{Windpark Planning}
+\subsection{Windpark Planning}
 \label{windpark-planning}
 
-Bj\"orn Zehner
+Bj\"orn Zehner \cite{zehner:windpark}
 
 \subsection{Urban Environments}
 \label{urban-environments}
 
-Lars Bilke, TODO put on GitHub and DOI
+TODO put on GitHub and DOI
 
 To help in the creation of urban environment visualizations usable for social sciences and for urban development a procedural building model generator was developed~\cite{bilke:master,procedural:modelling}. The software called \emph{CityGenerator}~\cite{bilke:citygenerator} allows to procedurally generate building models as well as small city scenes out of simple building blocks such as fa\c{c}ade textures, doors, windows and decoration elements. The user can specify input parameters including the building footprint, building height and designs a template fa\c{c}ade in a graphical user interface. This template fa\c{c}ade is defined by a set of grammatic rules~\cite{procedural:buildings}. The actual model generation is implemented as a \emph{VRED}-plugin allowing for immediate presentation in the \emph{VISLab}. \emph{Level-of-detail} (LOD) techniques ensure a good performance of larger scenes.
 
