@@ -33,9 +33,8 @@
         Dmitry Naumov      \and
         Karsten Rink       \and
         Agnes Sachse       \and
-        Benny Selle        \and
-        Alexander Singer   \and
-        Feng Sun           \and
+        % Alexander Singer   \and
+        % Feng Sun           \and
         Marc Walther       \and
         Norihiro Watanabe  \and
         Bj\"orn Zehner     \and
@@ -45,24 +44,22 @@
 %\authorrunning{Short form of author list} % if too long for running head
 
 \institute{L. Bilke \and T. Fischer \and C. Helbig \and T. Kalbacher \and O. Kolditz \and
-           Dmitry Naumov \and Karsten Rink \and Agnes Sachse \and Alexander Singer
+           Dmitry Naumov \and Karsten Rink \and Agnes Sachse
+           % \and Alexander Singer
            \and Marc Walther \and Norihiro Watanabe \at
               Department of Environmental Informatics, \\
               Helmholtz Centre for Environmental Research, \\
               Leipzig, Germany, \\
-              \email{lars.bilke@ufz.de}           %  \\
-%             \emph{Present address:} of F. Author  %  if needed
+              \email{lars.bilke@ufz.de}
            \and
            O. Kolditz \at
               Applied Environmental System Analysis, \\
               Technische University at Dresden, \\
               Dresden, Germany
            \and
-           B. Selle \at
-           \and
-           F. Sun \at
-              Beijing Hydrological Center, \\
-              Beijing, China
+           %F. Sun \at
+           %   Beijing Hydrological Center, \\
+           %   Beijing, China
            \and
            B. Zehner \at
               Bundesanstalt f\"ur Geowissenschaften und Rohstoffe, \\
@@ -80,7 +77,7 @@
 \maketitle
 
 \begin{abstract}
-Scientific visualization is an integral part of the modeling workflow, enabling researchers to understand complex or large datasets and simulation results. A high-resolution stereoscopic virtual reality (VR) environment further enhances the possibilities of visualization. Such an environment also allows to collaborate in work groups including people of different backgrounds and to present results of a research project to stakeholders or the public. The requirements for the computing equipment driving the VR environment require specialized software applications which can be run in a parallel fashion on a set of interconnected machines. Another challenge is to devise a useful data workflow from source datasets onto the display system. Therefore we develop software applications like the \emph{OpenGeoSys Data Explorer} and custom data conversion tools for established visualization packages such as \emph{\myedit{ParaView}{Unity}} and \emph{VTK}. We demonstrate our workflow by presenting visualization results for case studies from a broad range of applications. An outlook on how visualization techniques can be deeply integrated into the simulation process is given and future technical improvements such as a simplified hardware setup and useful interaction techniques are outlined.
+Scientific visualization is an integral part of the modeling workflow, enabling researchers to understand complex or large datasets and simulation results. A high-resolution stereoscopic virtual reality (VR) environment further enhances the possibilities of visualization. Such an environment also allows to collaborate in work groups including people of different backgrounds and to present results of a research project to stakeholders or the public. The requirements for the computing equipment driving the VR environment require specialized software applications which can be run in a parallel fashion on a set of interconnected machines. Another challenge is to devise a useful data workflow from source datasets onto the display system. Therefore we develop software applications like the \emph{OpenGeoSys Data Explorer}, custom data conversion tools for established visualization packages such as \emph{ParaView} and \emph{VTK} as well as presentation and interaction techniques for 3D applications like \emph{Unity}. We demonstrate our workflow by presenting visualization results for case studies from a broad range of applications. An outlook on how visualization techniques can be deeply integrated into the simulation process is given and future technical improvements such as a simplified hardware setup and useful interaction techniques are outlined.
 
 \keywords{Virtual Reality  \and  Visualization  \and  Computer Graphics}
 \end{abstract}
@@ -92,19 +89,16 @@ Scientific visualization is an integral part of the modeling workflow, enabling 
 \section{Introduction}
 \label{introduction}
 
-\myedit{}{Hier m\"usste eigentlich noch Motivation hin, wie super wichtig wiss. Visualisierung ist (Wiederholung aus Abstract + ein bisschen mehr + Quellenangaben. Am besten inkl. ein paar VR Dinge.}
+Visualization is an indispensable tool -- not only in environmental sciences -- to create insight from data originating from constantly evolving complex numerical models describing natural phenomena. Proper tools and workflows are needed to handle these data in a practical way to let researcher benefit advantages of visualization. Due to the variety of application domains this is a challenging field~\cite{childs:challenges}. We develop software applications like the \emph{OpenGeoSys Data Explorer}, custom data conversion tools for established visualization packages such as \emph{ParaView} and \emph{VTK} as well as presentation and interaction techniques for 3D applications like \emph{Unity} enabling scientists in environmental research to better explore, analyze and present their scientific problems and questions.
 
-TODO: Die beiden folgenden Abschnitte zusammenfuehren:
+The term \emph{VISLab} or \emph{Visualization Center} is often used in research to describe a facility with focus on interdisciplinary research with the help of visual methods and emerging technologies such as large screen installations~\cite{web:kaust}, virtual reality techniques~\cite{bryson:vr,burdea:vr} or novel collaboration tools~\cite{johnson:tele-immersivecollaboration}.
 
-Using numerical models for the assessment of current and future states of real world applications, aiding in the evaluation of various management options, has become a standard -- not only in environmental sciences. Proper tools are needed to visualize the data properly for analyzing and investigating measurements and modeling results. With nowadays increasing density of available data and concurrently more and more detailed model setups, this need has grown strongly.
-
-Climate change is one of the world's biggest challenges for the future. To predict these changes, meteorologists proceed in developing models that simulate the state of the atmosphere for a period of time. With an increasing of computational power, even the complexity of these models and their spatial resolution rises and produces large datasets with numerous variables (e.g.~wind, mass fraction). Scientific visualization is an essential medium to explore, analyze and present these datasets.
+% TODO
+%Such facilities can be found in research~\cite, engineering~\cite, training ~\cite{seymour:vror} and medicine~\cite.
+%We have established such a facility
 
 \section{TESSIN VISLab}
 \label{tessin-vislab}
-
-\myedit{}{Der folgende Absatz + die Stichpunktliste k\"onnte evtl schon mit in die n\"achste Section. Nachdem du in der Motivation ein bisschen was zu VR allgemein schreibst, sagst du, dass total viele Leute das schon erkannt haben wie wichtig das ist und dass in x, y und z VR-Zentren aufgebaut wurden. Wir haben auch eins und dann der folgende Absatz und dann der Technical Overview.}
-\bigskip
 
 The \emph{TESSIN VISLab} is a high-resolution immersive virtual reality (VR) environment and was established at the \emph{Helmholtz Centre for Environmental Research} (\emph{UFZ}) in 2008 to face the need of analyzing and working on increasingly complex datasets generated by simulations of natural phenomena in environmental sciences. Typical use cases for this environment are:
 
@@ -124,27 +118,10 @@ The \emph{TESSIN VISLab} is a high-resolution immersive virtual reality (VR) env
   presentations for the general public such as on open house events
 \end{itemize}
 
-\subsection{Existing vislabs}
-\label{existing-vislabs}
-
-\myedit{}{Definiere was ein VisLab eigentlich ist! (bzw. Was du hier drunter verstehst)}
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Potsdam
-\item
-  Zuse Berlin
-\item
-  Magdeburg
-\item
-  Aachen
-\end{itemize}
-
 \subsection{Technical Overview}
 \label{technical-overview}
 
-The hardware setup of the \emph{TESSIN VISLab} (TODO figure) uses a back projection-based stereoscopic visualization environment with an approximately 6x3 meter large main screen and extending projections on the floor and two side wings. In order to achieve a high resolution of approximately 6400 by 1800 pixels, 13 projectors are used. Images are generated alternating for the left and the right eye and users wear special glasses which separate these images, resulting in a stereoscopic view. For the stereo separation we can switch between two technologies -- active stereo using shutter glasses~\cite{activestereo} and passive stereo using \emph{Infitec} technology~\cite{infitec}. We use an optical tracking system, compensating for movement of the observer. An optical motion tracking system~\cite{tracking} based on infrared cameras detecting passive markers on the user's 3D glasses allows to compute images such that a correct perspective is maintained. Additionally a pointer device (\emph{Flystick}) allows for interaction with the virtual environment. The rendering is performed using a cluster with 13 workstations (one for each projector) equipped with high-end NVidia graphics boards (GPUs) and situated in a server room next to the presentation venue. The master / server process of the actual application is started on a hardware device in front of the display that allows to control multiple machines in the server room from one keyboard, mouse and monitor (\emph{KVM switch}). In addition to the virtual reality capabilities, the \emph{VISLab} can be employed for enhanced multimedia presentations such as the simultaneous display of images, videos and documents or a combination of 2D and 3D content. A typical use case is to present the 3D data on the main screen and additional datasets such as images, spreadsheets, maps and videos in a context-dependent way on the two side screens~\cite{zehner:modelcare}.
+The hardware setup of the \emph{TESSIN VISLab} (TODO figure) uses a back projection-based stereoscopic visualization environment with an approximately 6x3 meter large main screen and extending projections on the floor and two side wings. In order to achieve a high resolution of approximately 6400 by 1900 pixels on the main and side screens and 3600 by 1050 pixels on the floor screen (resulting in over 10 megapixel), 13 projectors are used. Images are generated alternating for the left and the right eye and users wear special glasses which separate these images, resulting in a stereoscopic view. For the stereo separation we can switch between two technologies -- active stereo using shutter glasses~\cite{activestereo} and passive stereo using \emph{Infitec} technology~\cite{infitec}. We use an optical tracking system, compensating for movement of the observer. An optical motion tracking system~\cite{tracking} based on infrared cameras detecting passive markers on the user's 3D glasses allows to compute images such that a correct perspective is maintained. Additionally a pointer device (\emph{Flystick}) allows for interaction with the virtual environment. The rendering is performed using a cluster with 13 workstations (one for each projector) equipped with high-end NVidia graphics boards (GPUs) and situated in a server room next to the presentation venue. The master / server process of the actual application is started on a hardware device in front of the display that allows to control multiple machines in the server room from one keyboard, mouse and monitor (\emph{KVM switch}). In addition to the virtual reality capabilities, the \emph{VISLab} can be employed for enhanced multimedia presentations such as the simultaneous display of images, videos and documents or a combination of 2D and 3D content. A typical use case is to present the 3D data on the main screen and additional datasets such as images, spreadsheets, maps and videos in a context-dependent way on the two side screens~\cite{zehner:modelcare}.
 
 \subsection{Mobile VR equipment}
 \label{mobile-vr-equipment}
@@ -207,9 +184,8 @@ Agnes Sachse \cite{graebe:modelcare}
 \subsection{Climate Data}
 \label{climate-data}
 
-Carolin Helbig
-
-\myedit{}{Daf\"ur fehlen hier noch ein/zwei S\"atze, was das \"uberhaupt f\"ur eine case study ist, warum die gemacht wurde, etc.)} Figure \ref{fig:wind} shows an example of a subset of a simulation domain, where we concurrently visualized wind field, mass fraction, humidity and heat fluxes in relation to the digital elevation model. The visualization is used to provide a detailed look at processes \myedit{}{(welche?)} and investigate if they have been captured correctly by the model. With the help of animation, the different time steps are displayed and the user can analyze the development of convection and observe heat transports, for instance. The challenge of these datasets is their highly multivariate character that requires stereoscopic 3D visualization for analysis. The visual combination of simulation, observation, and statical data, which differ in their spatial and temporal resolution, supports the scientists to verify, falsify and generate their hypothesis~\cite{helbig:eesenvirvis}.
+% TODO \myedit{}{Daf\"ur fehlen hier noch ein/zwei S\"atze, was das \"uberhaupt f\"ur eine case study ist, warum die gemacht wurde, etc.)}
+Figure \ref{fig:wind} shows an example of a subset of a simulation domain, where we concurrently visualized wind field, mass fraction, humidity and heat fluxes in relation to the digital elevation model. The visualization is used to provide a detailed look at processes \myedit{}{(welche?)} and investigate if they have been captured correctly by the model. With the help of animation, the different time steps are displayed and the user can analyze the development of convection and observe heat transports, for instance. The challenge of these datasets is their highly multivariate character that requires stereoscopic 3D visualization for analysis. The visual combination of simulation, observation, and statical data, which differ in their spatial and temporal resolution, supports the scientists to verify, falsify and generate their hypothesis~\cite{helbig:eesenvirvis}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/wind.jpg}
@@ -222,21 +198,19 @@ Carolin Helbig
 
 Dmitry Naumov
 
-\subsection{Nankou}
-\label{nankou}
+% \subsection{Nankou}
+% \label{nankou}
 
-Feng Sun \cite{sun:ees}
+% Feng Sun \cite{sun:ees}
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{images/nankou.jpg}
-\caption{TODO Nankou groundwater deteriation}
-\label{fig:nankou}
-\end{figure}
+% \begin{figure}
+%   \includegraphics[width=\linewidth]{images/nankou.jpg}
+% \caption{TODO Nankou groundwater deteriation}
+% \label{fig:nankou}
+% \end{figure}
 
 \subsection{Oman - Saltwater Intrusion}
 \label{oman---saltwater-intrusion}
-
-Marc Walther
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/oman.jpg}
@@ -244,7 +218,8 @@ Marc Walther
 \label{fig:oman}
 \end{figure}
 
-\myedit{}{(Wenn schon allg. Bla-bla, dann lieber irgendwas zu Wassermanagement in ariden Gebieten oder so.)} One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities~\cite{walther:cam, walther:eesenvirvis}. Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation~\cite{walther:modelcare}. Secondly, large datasets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was utilized~\cite{walther:eesenvirvis}.
+% \myedit{}{(Wenn schon allg. Bla-bla, dann lieber irgendwas zu Wassermanagement in ariden Gebieten oder so.)}
+One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities~\cite{walther:cam, walther:eesenvirvis}. Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation~\cite{walther:modelcare}. Secondly, large datasets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was utilized~\cite{walther:eesenvirvis}.
 
 \subsection{TERENO-Observatory Harz/Central German Lowlands}\label{tereno-bode}
 
@@ -258,11 +233,11 @@ Flow}\label{saudi-arabia---groundwater-flow}
 Thomas Kalbacher \cite{zehner:modelcare, rink:iwas}
 
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{images/streambed.jpg}
-\caption{TODO}
-\label{fig:streambed}
-\end{figure}
+% \begin{figure}
+%   \includegraphics[width=\linewidth]{images/streambed.jpg}
+% \caption{TODO}
+% \label{fig:streambed}
+% \end{figure}
 
 
 \subsection{Gro{\ss}-Sch\"onebeck - Geothermal Energy}
@@ -309,7 +284,7 @@ Bj\"orn Zehner \cite{zehner:windpark}
 \subsection{Urban Environments}
 \label{urban-environments}
 
-TODO put on GitHub and DOI
+% TODO put on GitHub and DOI
 
 To help in the creation of urban environment visualizations usable for social sciences and for urban development a procedural building model generator was developed~\cite{bilke:master,procedural:modelling}. The software called \emph{CityGenerator}~\cite{bilke:citygenerator} allows to procedurally generate building models as well as small city scenes out of simple building blocks such as fa\c{c}ade textures, doors, windows and decoration elements. The user can specify input parameters including the building footprint, building height and designs a template fa\c{c}ade in a graphical user interface. This template fa\c{c}ade is defined by a set of grammatic rules~\cite{procedural:buildings}. The actual model generation is implemented as a \emph{VRED}-plugin allowing for immediate presentation in the \emph{VISLab}. \emph{Level-of-detail} (LOD) techniques ensure a good performance of larger scenes.
 
@@ -333,7 +308,7 @@ Normally the simulation process is divided into four parts: during \emph{preproc
 
 Therefore the postprocessing should become integrated into the simulation itself to avoid the communication bottleneck by transferring the analyzed data only and to allow users to monitor their simulated processes to ensure reasonable behavior.
 
-We will use the library \emph{Catalyst}~\cite{web:catalyst} for integration of such an in-situ visualization into \emph{OpenGeoSys}. \emph{Catalyst} is an extension of \emph{VTK} / \emph{ParaView}. On the basis of a representative example dataset the user defines a visualization pipeline (either by a script or interactively in \emph{ParaView}) which is then executed after defined time step intervals of the simulation. During simulation time the user gets processed data as a result of the visualization pipeline, images of the visualization and an interactive remote visualization in \emph{ParaView}.
+We will use the library \emph{Catalyst}~\cite{web:catalyst} for integration of such an in-situ visualization system into \emph{OpenGeoSys}. \emph{Catalyst} is an extension of \emph{VTK} / \emph{ParaView}. On the basis of a representative example dataset the user defines a visualization pipeline (either by a script or interactively in \emph{ParaView}) which is then executed after defined time step intervals of the simulation. During simulation time the user gets processed data as a result of the visualization pipeline, images of the visualization and an interactive remote visualization in \emph{ParaView}.
 
 Furthermore it should be possible to view the live visualization in the VR environment of the \emph{VISLab} which is also connected to the HPC system of the UFZ.
 
@@ -342,8 +317,8 @@ Furthermore it should be possible to view the live visualization in the VR envir
 
 Our current hardware setup limits the usable 3D applications to software which can be run in parallel and synchronized on a computer cluster. This rules out the usage of commonly used software in environmental sciences such as geographic information systems (GIS). Novel high resolution projectors can help us to reduce the number of projectors for our display from 13 to 8 in which the main screen is driven by one 4K (Ultra HD resolution) projector instead of six SXGA projectors while also increasing the pixel count by approximately 30 \%. This allows the usage of every 3D enabled application when disclaiming the projection on the floor and side screens. Also startup times of the display will be much faster and overall system reliability is improved. The technical implementation of such a setup in combination with the remaining projectors on the floor and side screens is currently under review. An additional wireless presentation system~\cite{web:clickshare} entitles even people not familiar with the display system a straightforward usage of it.
 
-\bigskip
-\myedit{}{Du solltest vermutlich noch ein Acknowledgement einf\"ugen, in dem du auf die Danksagungen in den jeweiligen Papern verweisst. Damit sich niemand vergessen f\"uhlt\dots}
+%\bigskip
+% \myedit{}{Du solltest vermutlich noch ein Acknowledgement einf\"ugen, in dem du auf die Danksagungen in den jeweiligen Papern verweisst. Damit sich niemand vergessen f\"uhlt\dots}
 
 %%%%%%%%%%%%%
 %% ENDCONTENT
