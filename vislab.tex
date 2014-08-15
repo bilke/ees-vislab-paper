@@ -247,16 +247,18 @@ Norihiro Watanabe
 
 In geosciences we have to deal with complex geological structures containing different architectural elements such as layers, faults, diapirs, fracture networks. Thermo-hydro-mechanical-chemical processes under extreme thermodynamic conditions have to be considered for utilizing geological reservoirs, e.g.~for geothermal energy~\cite{zehner:uncertainty}
 
-\subsection{Otway-Basin - CO2-Storage}
+\subsection{PROTECT - Prediction of deformation to ensure carbon traps}
 \label{otway-basin---co2-storage}
 
-Jennifer Ziesch
+The \emph{PROTECT} project~\cite{krawczyk:deformation} is a partner project of the Australian \emph{CO2CRC Otway} project~\cite{cook:carbon}. Its aim is to determine the seismic and sub-seismic characteristics of potential fluid migration pathways between reservoir and surface. The goal of this part of the \emph{PROTECT} project that is presented here, was to generate an interactive visualization that combines original geophysical (i.e. seismic data and borehole data) and derived data (e.g., seismic attributes like coherency), a geological 3D model~\cite{ziesch:geology}, as well as modeling results (from kinematic retro-deformation and geomechanical forward modeling) into an immersive presentation which can be shown on VR display systems.
 
-A data conversion tool for seismic data was developed~\cite{bilke:simpleseismicreader} which allows to import rectilinear-shaped seismic data in a plain text format into \emph{ParaView} via its plugin-interface. This is necessary because typically SEG-Y formated seismic dataset does not allow an immediate interactive visualization. \emph{OpendTect}~\cite{web:opendtect} was used to transform the seismic data of the Otway Basin (available in SEG-Y format) to a plain text data format which can then be easily processed by our tool. In ParaView the seismic data gets imported as universal 3D image data.
+The first steps were the visualization of our high-resolution, geological 3D model and the 3D seismic data set in ParaView. Conventional 3D P-wave seismic data can image faults with an offset of hundreds of meters down to circa 20 meters. Using seismic attributes (i.e. variance) and visualization of the results within an VR environment, we were able to identify faults with smaller offsets (between 10 and 20 meters). This complements the detailed 3D seismic interpretation and thus helps to identify possible pathways for injected $CO_{2}$.
+
+3D seismics in SEG-Y format cannot be directly imported into \emph{ParaView}, so that a data conversion tool for seismic data was developed~\cite{bilke:simpleseismicreader}. It imports rectilinear-shaped seismic data in a plain text format into \emph{ParaView} using \emph{OpendTect}~\cite{web:opendtect}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/seismic.jpg}
-\caption{ParaView running in the VISLab showing a spatial subset and cross-sections of 3D seismic data and isosurfaces of interesting features.}
+\caption{TODO: new image, ParaView running in the VISLab showing a spatial subset and cross-sections of 3D seismic data and isosurfaces of interesting features.}
 \label{fig:seismic}
 \end{figure}
 
