@@ -8,6 +8,7 @@
 % KR: remove before submitting
 \usepackage{color}
 \usepackage{soul}
+\usepackage{gensymb}
 \newcommand{\myedit}[2]{\textcolor{red}{\st{#1}} \textcolor{blue}{#2}}
 \newcommand{\marginnote}[1]{\marginpar{\scriptsize\emph{\textbf{\textcolor{red}{#1}}}\normalsize}}
 
@@ -36,7 +37,7 @@
         % Sebastian Paulick  \and
         % Feng Sun           \and
         Marc Walther       \and
-        % Norihiro Watanabe  \and
+        Norihiro Watanabe  \and
         % Bj\"orn Zehner     \and
         Jennifer Ziesch
 }
@@ -52,7 +53,7 @@
            A. Sachse \and
            % Sebastian Paulick \and
            Marc Walther % \and
-           % Norihiro Watanabe
+           Norihiro Watanabe
            \at
               Department of Environmental Informatics, \\
               Helmholtz Centre for Environmental Research, \\
@@ -231,17 +232,20 @@ TERENO is a large-scale project aims to catalogue the longterm ecological, socia
 
 The presentation consists of over $70$ heterogeneous data sets of different scale and resolution. Most notable are surface representations, consisting of a terrain model of the whole region with over 1 mio triangles with a max edge length of 30\,m. Terrain models of the intensive test sites also exist at a much finer resolution, ranging from 30\,m for the larger regions to just 1\,m for the regions covering 1\,km\textsuperscript{2} or less. Various color transfer functions or textures can be applied to these surfaces, including elevation information, soil moisture, or indication of land use. While textures are originating from raster data, transfer functions are based on statistical data or look-up tables. Geometrical information includes the courses of streams at various resolutions and displayed with different prominence. Furthermore, the scene includes climate stations, measurement networks, bathymetries of some of the larger water bodies within the region, structural models for the subsurface of two intensive test sites, borehole data and much more. Most regional data sets are only visible when the presentation zooms in on the intensive test site they are located in, to avoid unnecessary clutter of the overall scene. Still, data integration of so many data sets acquired by different means is quite challenging. A number of different preprocessing steps were required for concurrent display and visibility of small data sets within the larger context~\cite{rink:wessti, rink:eesenvirvis}.
 
-\begin{comment} % TODO
-
-\subsection{Gro{\ss}-Sch\"onebeck - Geothermal Energy}
+\subsection{Gro{\ss}-Sch\"onebeck - Deep Geothermal Energy}
 \label{grouss-schoenebeck---geothermal-energy}
 
-Norihiro Watanabe
+The Gro{\ss}-Sch\"onebeck site (50\,km north of Berlin, Germany) was established as an in situ laboratory for deep sedimentary geothermal systems. The project aims to develop drilling and stimulation technologies to access deep aquifers in the North German basin where formation temperatures are up to 150\,\celsius. Two wells have been drilled to more than 4\,km depth to form a borehole doublet in permeable porous sandstones and fractured volcanic rocks of the Lower Permian~\cite{zimmermann:geothermal}. Series of hydraulic stimulations resulted in four induced hydraulic fractures to increase the reservoir permeability. The reservoir is also surround by natural fault systems and N- to NE-striking natural faults are expected to serve as main flow path in the current stress field~\cite{bloecher:geothermal}.
 
-In geosciences we have to deal with complex geological structures containing different architectural elements such as layers, faults, diapirs, fracture networks. Thermo-hydro-mechanical-chemical processes under extreme thermodynamic conditions have to be considered for utilizing geological reservoirs, i.e.~for geothermal energy~\cite{zehner:uncertainty}
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/geothermal.jpg}
+\caption{Hydraulic behavior visualiztaion with streamlines and arrows representing flow path of injected water and heat transport process represented by iso-surfaces of the cooling front (about 134\,\celsius).}
+\label{fig:geothermal}
+\end{figure}
 
-\end{comment}
+One of the ongoing studies in the project is to analyze impacts of the fault zone permeability on reservoir dynamics and overall productivity using a numerical model. The simulated domain includes a horizontal extent of around 5\,km with maximum vertical extension of 594\,m. Based on raster data (for geological layers) and points data (forming faults, induced fractures and well paths), an unstructured grid was generated to represent the complex reservoir structure with more than one million nodes and elements. The simulation takes into account flow and heat transport processes in the reservoir over 100 years assuming injection and production rates of $18\,m^3/h$ and injection temperature of 70\,\celsius. Simulation results in case of highly conductive fault zones were visualized with 3D techniques. The visualization shown in Figure \ref{fig:geothermal} is helpful to understand three dimensional flow path in the complex reservoir structure (mainly along the faults) and subsequent reservoir cooling behavior (convection along the faults with conduction near production). See \cite{zimmermann:geothermal} and \cite{bloecher:geothermal} for more information about the Gro{\ss}-Sch\"onebeck site and the reservoir modeling and~\cite{zehner:uncertainty} for previous work on uncertainty visualization.
 
+\begin{comment}
 \subsection{PROTECT - Prediction of deformation to ensure carbon traps}
 \label{otway-basin---co2-storage}
 
@@ -256,6 +260,8 @@ The first steps were the visualization of our high-resolution, geological 3D mod
 \caption{ParaView running in the VISLab showing a spatial subset and cross-sections of 3D seismic data and isosurfaces of interesting features.}
 \label{fig:seismic}
 \end{figure}
+
+\end{comment}
 
 \begin{comment} % TODO
 
