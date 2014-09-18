@@ -286,7 +286,27 @@ For a detailed analysis of processes such as convection and heat transport, subs
 \subsection{Pore-Scale}
 \label{pore-scale}
 
-Dmitry Naumov
+For a~detailed understanding of fluid flow behaiviour on the~pore-scale in
+unconsolidated sediments simulations of the~incompressible Navier-Stokes
+Equations were performed.
+The unconsolidated artificial (\emph{in-silico}) sediments were generated with
+the~SettleDyn software~\cite{web:SettleDyn} and prepared as input meshes for
+a~finite volume method;
+The~OpenFOAM simulation software~\cite{web:OpenFOAM} was used to obtain
+a~solution of the~incompressible Navier-Stokes Equations in the~pore network
+geometry.
+Additionally a~particle tracking method was applied to simulate particle
+deposition on the~grains' surfaces.
+
+For the~particular realization of the~randomly generated porous medium we
+studied the~fluid flow patterns in the~pores and distribution of
+the~sticking particles on the~surfaces of the~grains.
+Especially the~local fluid-flow structures were of interest.
+
+For the~visualization of multiple domain boundaries we used a~two-sided material
+rendering technique (described in detail in~\cite{naumov:twosidedrendering})
+obtaining an~unobscured view on the~local fluid flow visualization
+simultaneously keeping the~reference to the~geometry.
 
 
 \begin{comment} % TODO
