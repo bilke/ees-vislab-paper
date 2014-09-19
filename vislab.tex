@@ -28,7 +28,7 @@
 
 
 \author{Lars Bilke         \and
-        % Thomas Fischer     \and
+        Thomas Fischer     \and
         Carolin Helbig     \and
         Olaf Kolditz       \and
         Dmitri Naumov      \and
@@ -45,7 +45,7 @@
 %\authorrunning{Short form of author list} % if too long for running head
 
 \institute{L. Bilke \and
-           %T. Fischer \and
+           T. Fischer \and
            C. Helbig \and
            O. Kolditz \and
            D. Naumov \and
@@ -268,29 +268,6 @@ The first steps were the visualization of our high-resolution, geological 3D mod
 \subsection{Thuringian Syncline - Faults modeling}
 \label{thuringian-syncline---faults}
 
-The \emph{INFLUINS} project investigates the movement of fluids in the
-subsurface in the Thuringian Syncline which covers most of the federal state
-Thuringia in Germany. Due to the formation history, the syncline contains many
-fault zones. The focus of the project is on the flow from the region of the
-uppermost soil layer down to the basement at depths in several kilometers
-including the effects of fault zones. The geological model is based on a Gocad
-GoCad\footnote{\url{http://www.pdgm.com/products/godcad}} stratigraphic grid.
-It covers an area of $11\,800\,\textnormal{km}^2$. The west-north-west to
-east-south-east extent is circa $150\,\textnormal{km}^2$, the north-north-east to
-south-south-west is circa $80\,\textnormal{km}^2$. The geological model contains 12
-stratigraphic layers and 54 fault zones. The visualization is used to get a
-better understanding of the course of the stratigraphic layers and faults zones
-in the subsurface model. For simulation purposes the elements of the mesh has
-to be of good quality. The examination and depiction of the element quality of
-the original geological model leads to the decision to rebuild the mesh.
-For this reason it was a challenge to create a simulation model out of the
-geological model. Visualization was of great importance to verify particular
-steps of the simulation model setup. The visualization was also very helpful to
-check if boundary conditions are correctly incorporated into the simulation
-model. Furthermore the visualization is a valuable tool to interpret the
-simulation results of the prototype simulation model, see
-Fig.~\ref{fig:ThuringianSyncline}.
-
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/ThuringianSyncline.png}
 \caption{Results of prototyp simulation model: Fluid paths (streamlines),
@@ -298,6 +275,27 @@ Isosurfaces of hydraulic head colored by stratigraphic layer. The fault zones
 are depicted as green colored, wired volumes.}
 \label{fig:ThuringianSyncline}
 \end{figure}
+
+The \emph{INFLUINS} project investigates the movement of fluids in the
+subsurface in the Thuringian Syncline which covers most of the federal state
+Thuringia in Germany. Due to the formation history, the syncline contains many
+fault zones. The focus of the project is on the flow from the region of the
+uppermost soil layer down to the basement at depths in several kilometers
+including the effects of fault zones. The geological model is based on a \emph{
+GoCad}~\cite{web:gocad} stratigraphic grid.
+
+It covers an area of $11\,800\,\textnormal{km}^2$. The west-north-west to
+east-south-east extent is circa $150\,\textnormal{km}^2$, the north-north-east to
+south-south-west is circa $80\,\textnormal{km}^2$. The geological model contains 12
+stratigraphic layers and 54 fault zones. The visualization is used to get a
+better understanding of the course of the stratigraphic layers and faults zones
+in the subsurface model. For simulation purposes the challenge is to incorporate the geological model into a finite element mesh~\cite{zehner:gocad}. Also, the elements of the mesh have to meet certain quality criteria such as edge-length-ratio. Visualizations of the mesh and its quality help to identify improvable mesh areas and compare alignment to the original geological model.
+Therefore visualization was of great importance to verify particular
+steps of the simulation model setup and to
+check if boundary conditions were correctly incorporated into the simulation
+model. Furthermore the visualization is a valuable tool to interpret the
+simulation results of the prototype simulation model as seen in
+figure~\ref{fig:ThuringianSyncline}.
 
 %\end{comment}
 
@@ -315,20 +313,19 @@ For a detailed analysis of processes such as convection and heat transport, subs
 \end{figure}
 
 
-
 \subsection{Pore-Scale}
 \label{pore-scale}
 
-For a~detailed understanding of fluid flow behaiviour on the~pore-scale in
+For a~detailed understanding of fluid flow behavior on the~pore-scale in
 unconsolidated sediments simulations of the~incompressible Navier-Stokes
 Equations were performed.
 The unconsolidated artificial (\emph{in-silico}) sediments were generated with
 the~SettleDyn software~\cite{web:SettleDyn} and prepared as input meshes for
-a~finite volume method;
+a~finite volume method.
 The~OpenFOAM simulation software~\cite{web:OpenFOAM} was used to obtain
 a~solution of the~incompressible Navier-Stokes Equations in the~pore network
 geometry.
-Additionally a~particle tracking method was applied to simulate particle
+Additionally, a~particle tracking method was applied to simulate particle
 deposition on the~grains' surfaces.
 
 For the~particular realization of the~randomly generated porous medium we
@@ -340,9 +337,8 @@ For the~visualization of multiple domain boundaries we used a~two-sided material
 rendering technique (described in detail in~\cite{naumov:twosidedrendering})
 obtaining an~unobscured view on the~local fluid flow visualization
 simultaneously keeping the~reference to the~geometry.
-The~following Figure~\ref{fig:porescale} depicts particle visualization with
+Figure~\ref{fig:porescale} depicts the particle visualization with
 two-sided materials rendering.
-
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/porescale_vislab.jpg}
@@ -372,7 +368,7 @@ Andreas Huth Formind \cite{kohler:98}
 
 We have developed a scenario for applying the \emph{VISLab} to the visualization of landscapes and for interactive tasks, such as interviewing members of the public about their opinions regarding the location and different designs for potential new wind parks. This work has been carried out within the context of a project that aims at finding ways to minimize the conflicts of land use for energy generation using wind-turbines with other uses or with environmental, nature and landscape protection issues.
 
-As a first step a workflow has been developed and a program has been implemented in C++ for the efficient semiautomatic construction of a 3D landscape model from a library of 3D tree models and \emph{GIS} (geographic information systems) data~\cite{zehner:landscape}. The model generated has been constructed using the \emph{OpenSG} scenegraph and could be loaded into \emph{VRED} for displaying it in the \emph{VISLab}. Rendering up to $22000$ trees, each one consisting of more than $50000$ polygons at the highest level of detail, required the scene to be highly optimized and to use several rendering tricks, such as the level of detail combined with tree structures, and shading technologies.
+As a first step a workflow has been developed and a program has been implemented in C++ for the efficient semiautomatic construction of a 3D landscape model from a library of 3D tree models and \emph{GIS} (geographic information systems) data~\cite{zehner:landscape}. The model generated has been constructed using the \emph{OpenSG} scenegraph and could be loaded into \emph{VRED} for displaying it in the \emph{VISLab}. Rendering up to 22\,000 trees, each one consisting of more than 50\,000 polygons at the highest level of detail, required the scene to be highly optimized and to use several rendering tricks, such as the level of detail combined with tree structures, and shading technologies.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/landscape.jpg}
