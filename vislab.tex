@@ -30,7 +30,7 @@
         % Thomas Fischer     \and
         Carolin Helbig     \and
         Olaf Kolditz       \and
-        % Dmitry Naumov      \and
+        Dmitri Naumov      \and
         Karsten Rink       \and
         Agnes Sachse       \and
         % Sebastian Paulick  \and
@@ -47,7 +47,7 @@
            %T. Fischer \and
            C. Helbig \and
            O. Kolditz \and
-           %D. Naumov \and
+           D. Naumov \and
            K. Rink \and
            A. Sachse \and
            % Sebastian Paulick \and
@@ -281,14 +281,46 @@ For a detailed analysis of processes such as convection and heat transport, subs
 \label{fig:wind}
 \end{figure}
 
-\begin{comment} % TODO
 
 
 \subsection{Pore-Scale}
 \label{pore-scale}
 
-Dmitry Naumov
+For a~detailed understanding of fluid flow behaiviour on the~pore-scale in
+unconsolidated sediments simulations of the~incompressible Navier-Stokes
+Equations were performed.
+The unconsolidated artificial (\emph{in-silico}) sediments were generated with
+the~SettleDyn software~\cite{web:SettleDyn} and prepared as input meshes for
+a~finite volume method;
+The~OpenFOAM simulation software~\cite{web:OpenFOAM} was used to obtain
+a~solution of the~incompressible Navier-Stokes Equations in the~pore network
+geometry.
+Additionally a~particle tracking method was applied to simulate particle
+deposition on the~grains' surfaces.
 
+For the~particular realization of the~randomly generated porous medium we
+studied the~fluid flow patterns in the~pores and distribution of
+the~sticking particles on the~surfaces of the~grains.
+Especially the~local fluid-flow structures were of interest.
+
+For the~visualization of multiple domain boundaries we used a~two-sided material
+rendering technique (described in detail in~\cite{naumov:twosidedrendering})
+obtaining an~unobscured view on the~local fluid flow visualization
+simultaneously keeping the~reference to the~geometry.
+The~following Figure~\ref{fig:porescale} depicts particle visualization with
+two-sided materials rendering.
+
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/porescale_vislab.jpg}
+  \caption{Pore-scale visualization of sticky particles on grains' surfaces.
+  The~actor is looking from inside of a~grain looking through it; The~others
+  grain's surfaces shown from outside are rendered opaque.}
+\label{fig:porescale}
+\end{figure}
+
+
+\begin{comment} % TODO
 \subsection{Biodiversity in Rain Forests}
 \label{biodiversity-in-rain-forests}
 
