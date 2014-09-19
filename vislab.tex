@@ -263,16 +263,43 @@ The first steps were the visualization of our high-resolution, geological 3D mod
 
 \end{comment}
 
-\begin{comment} % TODO
+%\begin{comment} % TODO
 
 \subsection{Thuringian Syncline - Faults modeling}
 \label{thuringian-syncline---faults}
 
-The \emph{INFLUINS} project investigates the movement of fluids in the subsurface in the Thuringian Syncline which covers most of the federal state Thuringia in Germany. Due to the formation history, the syncline contains many fault zones. The focus of the project is on the flow from the region of the uppermost soil layer down to the basement at depths in several kilometers including the effects of fault zones. In the \emph{INFLUINS} project the visualization is used to get a better understanding of the course of the stratigraphic layers, the integration of faults zones in the subsurface model and to examine the quality of the mesh elements. (TODO Ausführlicher) Furthermore the visualization is a valuable tool to interpret the simulation results.
+The \emph{INFLUINS} project investigates the movement of fluids in the
+subsurface in the Thuringian Syncline which covers most of the federal state
+Thuringia in Germany. Due to the formation history, the syncline contains many
+fault zones. The focus of the project is on the flow from the region of the
+uppermost soil layer down to the basement at depths in several kilometers
+including the effects of fault zones. The geological model is based on a Gocad
+GoCad\footnote{\url{http://www.pdgm.com/products/godcad}} stratigraphic grid.
+It covers an area of $11\,800\,\textnormal{km}^2$. The west-north-west to
+east-south-east extent is circa $150\,\textnormal{km}^2$, the north-north-east to
+south-south-west is circa $80\,\textnormal{km}^2$. The geological model contains 12
+stratigraphic layers and 54 fault zones. The visualization is used to get a
+better understanding of the course of the stratigraphic layers and faults zones
+in the subsurface model. For simulation purposes the elements of the mesh has
+to be of good quality. The examination and depiction of the element quality of
+the original geological model leads to the decision to rebuild the mesh.
+For this reason it was a challenge to create a simulation model out of the
+geological model. Visualization was of great importance to verify particular
+steps of the simulation model setup. The visualization was also very helpful to
+check if boundary conditions are correctly incorporated into the simulation
+model. Furthermore the visualization is a valuable tool to interpret the
+simulation results of the prototype simulation model, see
+Fig.~\ref{fig:ThuringianSyncline}.
 
-TODO Bild kommt, wenn das erste sinnvolle Modell gerechnet ist.
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/ThuringianSyncline.png}
+\caption{Results of prototyp simulation model: Fluid paths (streamlines),
+Isosurfaces of hydraulic head colored by stratigraphic layer. The fault zones
+are depicted as green colored, wired volumes.}
+\label{fig:ThuringianSyncline}
+\end{figure}
 
-\end{comment}
+%\end{comment}
 
 \subsection{Climate Data}
 \label{climate-data}
