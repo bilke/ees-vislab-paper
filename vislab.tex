@@ -38,8 +38,8 @@
         % Feng Sun           \and
         Marc Walther       \and
         Norihiro Watanabe  \and
-        % Bj\"orn Zehner     \and
-        Jennifer Ziesch
+        Bj\"orn Zehner
+        % Jennifer Ziesch
 }
 
 %\authorrunning{Short form of author list} % if too long for running head
@@ -48,11 +48,9 @@
            T. Fischer \and
            C. Helbig \and
            O. Kolditz \and
-           D. Naumov \and
            K. Rink \and
-           A. Sachse \and
            % Sebastian Paulick \and
-           Marc Walther % \and
+           Marc Walther \and
            Norihiro Watanabe
            \at
               Department of Environmental Informatics, \\
@@ -60,18 +58,33 @@
               Leipzig, Germany, \\
               \email{lars.bilke@ufz.de}
            \and
+           A. Sachse \at
+              Department of Catchment Hydrology, \\
+              Helmholtz Centre for Environmental Research, \\
+              Leipzig, Germany
+           \and
            O. Kolditz \at
-              Applied Environmental System Analysis, \\
+              Chair of Applied Environmental System Analysis, \\
               Technische University at Dresden, \\
               Dresden, Germany
-           % \and
-           % B. Zehner \at
-           %    Bundesanstalt f\"ur Geowissenschaften und Rohstoffe, \\
-           %    Hannover, Germany
            \and
-           J. Ziesch \at
-              Leibniz Institute for Applied Geophysics, \\
+           M. Walther \at
+              Institute for Groundwater Management, \\
+              Technische University at Dresden, \\
+              Dresden, Germany
+           \and
+           D. Naumov \at
+              Faculty of Mechanical and Energy Engineering, \\
+              Leipzig University of Applied Sciences, \\
+              Leipzig, Germany
+           \and
+           B. Zehner \at
+              Bundesanstalt f\"ur Geowissenschaften und Rohstoffe, \\
               Hannover, Germany
+           \and
+           %J. Ziesch \at
+           %   Leibniz Institute for Applied Geophysics, \\
+           %   Hannover, Germany
 }
 
 \date{Received: date / Accepted: date}
@@ -182,7 +195,7 @@ The catchment of the river Ammer in southwest Germany has been selected as the s
 
 The finite-element groundwater model is based on a digital elevation model with a resolution of 100\,m in combination with interpolated subsurface layers based on the stratigraphic data of over 100 boreholes. For simulation purposes, the subsurface information has been combined into four separate layers, consisting of a part\-ly karstified limestone aquifer overlaid by Keuper-layers. In addition, the scene includes the stream network and groundwater production wells, which are employed as boundary conditions for the model as well as raster data with groundwater recharge information. Based on the results of a steady-state groundwater recharge simulation, the presentation also includes iso-surfaces representing the groundwater head as well as stream tracers for the visualization of flow paths within the catchment. See Selle et al~\cite{selle:wessti} for more information on the groundwater study and Rink et al~\cite{rink:wessti} for model setup and data visualization.
 
-\subsection{Western Dead Sea - Sustainable Management of Water in Arid and Semi-Arid
+\subsection{Western Dead Sea -- Sustainable Management of Water in Arid and Semi-Arid
 Regions}
 \label{western-dead-sea---sustainable-management-of-water-in-arid-and-semi-arid-regions}
 
@@ -196,7 +209,7 @@ The catchment of the Western Dead Sea (Israel / Palestine) was analyzed within t
 
 Several methods were applied to localize (with remote sensing data), to quantify (with 2D hydrological and 3D groundwater flow modeling) and to simulate water flow volumes and flow paths (with groundwater flow modeling~\cite{graebe:modelcare}) towards the Dead Sea. The study area is characterized by two Cretaceous limestone aquifers (confined / unconfined) of around 400\,m thickness including steep hydraulic gradients, which serve as the only fresh water resources in this region. Especially the visualization of the numerical groundwater flow model (see figure \ref{fig:deadsea}), which was implemented into OpenGeoSys, helps to detect uncertainties of the hydrogeological input data sets and enables a comprehension of the flow dynamics of the heterogeneous partly karstified limestone aquifer. To this end the calibrated steady state groundwater flow model provides quantifications of the water balance of the subsurface catchment and is the starting point for the transient modeling of surface and subsurface flow processes~\cite{graebe:wessti}. The hydrological model \emph{J2000g}~\cite{KrauseKralisch:2005, Krause:2001} was applied to estimate i.e.~the groundwater recharge of the widely distributed bare rock soil cover for a 30 years period. Its result was transferred as a time dependent boundary condition to the 3D finite element mesh nodes with a resolution of 250\,m and represents by its trend the continuous lowering of the water level in the aquifer system due to over pumping issues.
 
-\subsection{Nankou - Groundwater deterioration in a suburban area of Beijing}
+\subsection{Nankou -- Groundwater deterioration in a suburban area of Beijing}
 \label{nankou}
 
 Nitrate contamination of groundwater resources is a severe environmental problem worldwide, mostly caused by extensive agriculture using large amounts of fertilizer to increase plant productivity. Nitrate has extreme long residence times in the subsurface and remediation is therefore hampered and requires costly long-term efforts. Therefore, simulation and visualization are important tools for planning and optimization of remediation scenarios. Figure \ref{fig:nankou} depicts the visualization of an OpenGeoSys subsurface model for the development of remediation setups of nitrate contaminations in China (\emph{Nankou} project) using the VR environment of the \emph{VISLab}. To present complex hydro-geological structures and results of nitrate remediation in the Nankou area to stakeholders and decision-makers of the Beijing district, 3D visualization techniques have been successfully used to foster both understanding and discussion of the invoked environmental problems within the geographical context, data availability and simulation results for the Nankou nitrate remediation project in China~\cite{sun:ees}.
@@ -207,7 +220,7 @@ Nitrate contamination of groundwater resources is a severe environmental problem
 \label{fig:nankou}
 \end{figure}
 
-\subsection{Oman - Saltwater Intrusion Modeling}
+\subsection{Oman -- Saltwater Intrusion Modeling}
 \label{oman---saltwater-intrusion}
 
 Within the project \emph{International Water Research Alliance Saxony} (IWAS), one of the main goals was to assess and evaluate water resources under various natural and human induced stress conditions. Several subprojects considered study regions in different parts of the world~\cite{kalbus:ees}.
@@ -232,7 +245,18 @@ TERENO is a large-scale project aims to catalogue the longterm ecological, socia
 
 The presentation consists of over $70$ heterogeneous data sets of different scale and resolution. Most notable are surface representations, consisting of a terrain model of the whole region with over 1 mio triangles with a max edge length of 30\,m. Terrain models of the intensive test sites also exist at a much finer resolution, ranging from 30\,m for the larger regions to just 1\,m for the regions covering 1\,km\textsuperscript{2} or less. Various color transfer functions or textures can be applied to these surfaces, including elevation information, soil moisture, or indication of land use. While textures are originating from raster data, transfer functions are based on statistical data or look-up tables. Geometrical information includes the courses of streams at various resolutions and displayed with different prominence. Furthermore, the scene includes climate stations, measurement networks, bathymetries of some of the larger water bodies within the region, structural models for the subsurface of two intensive test sites, borehole data and much more. Most regional data sets are only visible when the presentation zooms in on the intensive test site they are located in, to avoid unnecessary clutter of the overall scene. Still, data integration of so many data sets acquired by different means is quite challenging. A number of different preprocessing steps were required for concurrent display and visibility of small data sets within the larger context~\cite{rink:wessti, rink:eesenvirvis}.
 
-\subsection{Gro{\ss}-Sch\"onebeck - Deep Geothermal Energy}
+\subsection{Mont Terri -- Geotechnical Field Laboratory}
+\label{Mont Terri -- Geotechnical Field Laboratory}
+
+Visualization methods are particularly important for geoscientific applications as information is buried in the geologic subsurface. With help of modeling and visualization real pictures of the hidden underground can be generated. Figure \ref{fig:mont-terri} depicts the illustration of a tunnel system in the \emph{Mont Terri} geotechnical underground laboratory in Switzerland which is operated by a consortium of international research institutions~\cite{web:mont-terri}. In order to model thermo-hydro-mechanical-chemical (THMC) processes in host rock potentially suited for radioactive waste deposition, appropriate numerical models are required \cite{ Kolditz2004345, Shao20091287, Xie2006122}. Those numerical simulators use a geometric discretization of the domain of interest. The red lines in Fig. X show the mesh edges of a finite element discretization. Without 3D visualization techniques the analysis of mesh quality would be a very confusing task. Mesh quality is important to provide accurate results of numerical simulations.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/mont-terri.jpg}
+\caption{Finite element discretization in the Mont Terri geotechnical laboratory are shown as red lines overlaid on the tunnel system.}
+\label{fig:mont-terri}
+\end{figure}
+
+\subsection{Gro{\ss}-Sch\"onebeck -- Deep Geothermal Energy}
 \label{grouss-schoenebeck---geothermal-energy}
 
 The Gro{\ss}-Sch\"onebeck site (50\,km north of Berlin, Germany) was established as an in situ laboratory for deep sedimentary geothermal systems. The project aims to develop drilling and stimulation technologies to access deep aquifers in the North German basin where formation temperatures are up to 150\,\celsius. Two wells have been drilled to more than 4\,km depth to form a borehole doublet in permeable porous sandstones and fractured volcanic rocks of the Lower Permian~\cite{zimmermann:geothermal}. Series of hydraulic stimulations resulted in four induced hydraulic fractures to increase the reservoir permeability. The reservoir is also surround by natural fault systems and N- to NE-striking natural faults are expected to serve as main flow path in the current stress field~\cite{bloecher:geothermal}.
@@ -246,7 +270,7 @@ The Gro{\ss}-Sch\"onebeck site (50\,km north of Berlin, Germany) was established
 One of the ongoing studies in the project is to analyze impacts of the fault zone permeability on reservoir dynamics and overall productivity using a numerical model. The simulated domain includes a horizontal extent of around 5\,km with maximum vertical extension of 594\,m. Based on raster data (for geological layers) and points data (forming faults, induced fractures and well paths), an unstructured grid was generated to represent the complex reservoir structure with more than one million nodes and elements. The simulation takes into account flow and heat transport processes in the reservoir over 100 years assuming injection and production rates of $18\,m^3/h$ and injection temperature of 70\,\celsius. Simulation results in case of highly conductive fault zones were visualized with 3D techniques. The visualization shown in Figure \ref{fig:geothermal} is helpful to understand three dimensional flow path in the complex reservoir structure (mainly along the faults) and subsequent reservoir cooling behavior (convection along the faults with conduction near production). See \cite{zimmermann:geothermal} and \cite{bloecher:geothermal} for more information about the Gro{\ss}-Sch\"onebeck site and the reservoir modeling and~\cite{zehner:uncertainty} for previous work on uncertainty visualization.
 
 \begin{comment}
-\subsection{PROTECT - Prediction of deformation to ensure carbon traps}
+\subsection{PROTECT -- Prediction of deformation to ensure carbon traps}
 \label{otway-basin---co2-storage}
 
 The \emph{PROTECT} project~\cite{krawczyk:deformation} is a partner project of the Australian \emph{CO2CRC Otway} project~\cite{cook:carbon}. Its aim is to determine the seismic and sub-seismic characteristics of potential fluid migration pathways between reservoir and surface. The goal of this part of the \emph{PROTECT} project that is presented here, was to generate an interactive visualization that combines original geophysical (i.e. seismic data and borehole data) and derived data (i.e.~seismic attributes like coherency), a geological 3D model~\cite{ziesch:geology}, as well as modeling results (from kinematic retro-deformation and geomechanical forward modeling) into an immersive presentation which can be shown on VR display systems.
@@ -265,7 +289,7 @@ The first steps were the visualization of our high-resolution, geological 3D mod
 
 %\begin{comment} % TODO
 
-\subsection{Thuringian Syncline - Faults modeling}
+\subsection{Thuringian Syncline -- Faults modeling}
 \label{thuringian-syncline---faults}
 
 \begin{figure}[htb]
@@ -394,7 +418,9 @@ To help in the creation of urban environment visualizations usable for social sc
 \section{Future work}
 \label{future-work}
 
-For the future, we would like to foster the usage of scientific visualization in the daily research work. All software and tools we develop are freely available and open source. Accessibility to these tools is crucial so we are aiming to provide a comprehensive documentation~\cite{web:ogs-docs} which can be enhanced with video tutorials in the future and we also arrange training courses several times a year and organize workshops at visualization conferences~\cite{web:envirvis}.
+For the future, we would like to foster the usage of scientific visualization in the daily research work. All software and tools we develop are freely available and open source. Accessibility to these tools is crucial so we are aiming to provide a comprehensive documentation~\cite{web:ogs-docs} which can be enhanced with video tutorials in the future.
+
+For further outreach and education we offer excursions to the \emph{VISLab} for students in environmental sciences, we arrange training courses several times a year and organize workshops at visualization conferences~\cite{web:envirvis}.
 
 To face the challenge to visualize increasingly complex models and simulations, especially in the field of high-performance computing (HPC), we will integrate visualization methods into simulation codes. A simplification of the technical setup of the \emph{TESSIN VISLab} will unlock more fields of applications.
 
@@ -425,7 +451,7 @@ Our current hardware setup limits the usable 3D applications to software which c
 
 
 \begin{acknowledgements}
-The authors would like to thank Benny Selle, Nico Trauth, Thomas Kalbacher and Feng Sun for providing some of the data sets presented in the case studies. Further acknowledgements to particular project funding are referred to in the individual papers cited for the case studies presented in this article.
+The authors would like to thank Thomas Kalbacher, Karsten Rinke, Benny Selle, Feng Sun and Nico Trauth for providing some of the data sets presented in the case studies. We thank Gerik Scheuermann for organizing the EnvirVis workshops. Further acknowledgments to particular project funding are referred to in the individual papers cited for the case studies presented in this article.
 \end{acknowledgements}
 
 % BibTeX users please use one of
