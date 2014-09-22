@@ -199,26 +199,27 @@ The finite-element groundwater model is based on a digital elevation model with 
 Regions}
 \label{western-dead-sea---sustainable-management-of-water-in-arid-and-semi-arid-regions}
 
-The catchment of the Western Dead Sea (Israel / Palestine) was analyzed within the \emph{SUMAR}-Project and de\-mon\-strates a groundwater flow model of a semi-arid to arid case study which is coupled with a hydrological model. The climatic conditions exacerbate the tense situation of the drinking water supply for the 3800\,km\textsuperscript{2} large study area. And secondly, they lead to political and socio-environmental stresses. The overall aim of the \emph{SU\-MAR}-project~\cite{Siebert:2014} focuses on the quantity of surface and groundwater fluxes inside the catchment, which is influenced by faults of the Jordan Rift Valley System and were drained towards the shrinking, hypersaline and endoheric Dead Sea.
-
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/deadsea.jpg}
 \caption{Cross section of the Upper and Lower Judea Group aquifer of the Western Dead Sea catchment, divided by an thin aquiclude (red line). The density of the groundwater flow paths with its velocity vectors describes the groundwater flow dynamics of the Cretaceous aquifer system from west of the catchment towards the Dead Sea. Colored spheres show the locations of wells, climate stations and cities for better orientation.}
 \label{fig:deadsea}
 \end{figure}
 
+The catchment of the Western Dead Sea (Israel / Palestine) was analyzed within the \emph{SUMAR}-Project and de\-mon\-strates a groundwater flow model of a semi-arid to arid case study which is coupled with a hydrological model. The climatic conditions exacerbate the tense situation of the drinking water supply for the 3800\,km\textsuperscript{2} large study area. And secondly, they lead to political and socio-environmental stresses. The overall aim of the \emph{SU\-MAR}-project~\cite{Siebert:2014} focuses on the quantity of surface and groundwater fluxes inside the catchment, which is influenced by faults of the Jordan Rift Valley System and were drained towards the shrinking, hypersaline and endoheric Dead Sea.
+
 Several methods were applied to localize (with remote sensing data), to quantify (with 2D hydrological and 3D groundwater flow modeling) and to simulate water flow volumes and flow paths (with groundwater flow modeling~\cite{graebe:modelcare}) towards the Dead Sea. The study area is characterized by two Cretaceous limestone aquifers (confined / unconfined) of around 400\,m thickness including steep hydraulic gradients, which serve as the only fresh water resources in this region. Especially the visualization of the numerical groundwater flow model (see figure \ref{fig:deadsea}), which was implemented into OpenGeoSys, helps to detect uncertainties of the hydrogeological input data sets and enables a comprehension of the flow dynamics of the heterogeneous partly karstified limestone aquifer. To this end the calibrated steady state groundwater flow model provides quantifications of the water balance of the subsurface catchment and is the starting point for the transient modeling of surface and subsurface flow processes~\cite{graebe:wessti}. The hydrological model \emph{J2000g}~\cite{KrauseKralisch:2005, Krause:2001} was applied to estimate i.e.~the groundwater recharge of the widely distributed bare rock soil cover for a 30 years period. Its result was transferred as a time dependent boundary condition to the 3D finite element mesh nodes with a resolution of 250\,m and represents by its trend the continuous lowering of the water level in the aquifer system due to over pumping issues.
 
 \subsection{Nankou -- Groundwater deterioration in a suburban area of Beijing}
 \label{nankou}
-
-Nitrate contamination of groundwater resources is a severe environmental problem worldwide, mostly caused by extensive agriculture using large amounts of fertilizer to increase plant productivity. Nitrate has extreme long residence times in the subsurface and remediation is therefore hampered and requires costly long-term efforts. Therefore, simulation and visualization are important tools for planning and optimization of remediation scenarios. Figure \ref{fig:nankou} depicts the visualization of an OpenGeoSys subsurface model for the development of remediation setups of nitrate contaminations in China (\emph{Nankou} project) using the VR environment of the \emph{VISLab}. To present complex hydro-geological structures and results of nitrate remediation in the Nankou area to stakeholders and decision-makers of the Beijing district, 3D visualization techniques have been successfully used to foster both understanding and discussion of the invoked environmental problems within the geographical context, data availability and simulation results for the Nankou nitrate remediation project in China~\cite{sun:ees}.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/nankou.jpg}
 \caption{A simulated ground water flow system is shown around pumping wells in the Nankou area with nitrate concentrations as colors on the streamlines.}
 \label{fig:nankou}
 \end{figure}
+
+Nitrate contamination of groundwater resources is a severe environmental problem worldwide, mostly caused by extensive agriculture using large amounts of fertilizer to increase plant productivity. Nitrate has extreme long residence times in the subsurface and remediation is therefore hampered and requires costly long-term efforts. Therefore, simulation and visualization are important tools for planning and optimization of remediation scenarios. Figure \ref{fig:nankou} depicts the visualization of an OpenGeoSys subsurface model for the development of remediation setups of nitrate contaminations in China (\emph{Nankou} project) using the VR environment of the \emph{VISLab}. To present complex hydro-geological structures and results of nitrate remediation in the Nankou area to stakeholders and decision-makers of the Beijing district, 3D visualization techniques have been successfully used to foster both understanding and discussion of the invoked environmental problems within the geographical context, data availability and simulation results for the Nankou nitrate remediation project in China~\cite{sun:ees}.
+
 
 \subsection{Oman -- Saltwater Intrusion Modeling}
 \label{oman---saltwater-intrusion}
@@ -235,7 +236,13 @@ One of these case studies, a region scale study on density driven flow in a coas
 
 \subsection{TERENO-Observatory Harz/Central German Lowlands}\label{tereno-bode}
 
-TERENO is a large-scale project aims to catalogue the longterm ecological, social and economic impact of global change at regional level~\cite{zacharias:tereno}. Four areas in Germany have been selected and are now heavily instrumented to allow extensive studies and simulations for researchers from different disciplines. Hydrogeological analysis in central Germany is being conducted in the catchment of the River Bode with a size of 3,100\,km\textsuperscript{2}. Within that area a number of intensive test sites have been selected, ranging in size from a small area of about one hectare, concerned with assessment of water balance in a forested region, to the complete catchment of one of the Bode's tributaries with a size of over 450\,km\textsuperscript{2} where hydrological processes in the stream as well as in the hyporheic zone are investigated~\cite{schmidt:selke, trauth:flow} as shown in figure \ref{fig:streambed}.
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/tereno.png}
+\caption{Visualization of the Bode catchment (bold red lines) of the TERENO investigation based on a digital elevation model (DEM) including the intensive test sites, Rappbode reservoir (Rinke et al. 2012), Hohes Holz, Sauerbach, Selke catchment hosting the Sch\"afertal.}
+\label{fig:tereno}
+\end{figure}
+
+TERENO is a large-scale project aims to catalogue the longterm ecological, social and economic impact of global change at regional level~\cite{zacharias:tereno}. Four areas in Germany have been selected and are now heavily instrumented to allow extensive studies and simulations for researchers from different disciplines. Hydrogeological analysis in central Germany is being conducted in the catchment of the River Bode with a size of 3,100\,km\textsuperscript{2} (see figure \ref{fig:tereno}). Within that area a number of intensive test sites have been selected, ranging in size from a small area of about one hectare, concerned with assessment of water balance in a forested region, to the complete catchment of one of the Bode's tributaries with a size of over 450\,km\textsuperscript{2} where hydrological processes in the stream as well as in the hyporheic zone are investigated~\cite{schmidt:selke, trauth:flow} as shown in figure \ref{fig:streambed}.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/streambed.jpg}
