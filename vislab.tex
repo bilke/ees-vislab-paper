@@ -30,16 +30,18 @@
 \author{Lars Bilke         \and
         Thomas Fischer     \and
         Carolin Helbig     \and
-        Olaf Kolditz       \and
+				Charlotte Krawczyk \and
+        Thomas Nagel       \and
         Dmitri Naumov      \and
+        Sebastian Paulick  \and
         Karsten Rink       \and
         Agnes Sachse       \and
-        Sebastian Paulick  \and
-        % Feng Sun           \and
+        Sophie Schelenz    \and
         Marc Walther       \and
         Norihiro Watanabe  \and
-        Bj\"orn Zehner
-        % Jennifer Ziesch
+        Bj\"orn Zehner     \and
+        Jennifer Ziesch    \and
+        Olaf Kolditz
 }
 
 %\authorrunning{Short form of author list} % if too long for running head
@@ -48,9 +50,9 @@
            T. Fischer \and
            C. Helbig \and
            O. Kolditz \and
+           T. Nagel \and
            K. Rink \and
-           Marc Walther \and
-           Norihiro Watanabe
+           N. Watanabe
            \at
               Department of Environmental Informatics, \\
               Helmholtz Centre for Environmental Research, \\
@@ -59,6 +61,11 @@
            \and
            A. Sachse \at
               Department of Catchment Hydrology, \\
+              Helmholtz Centre for Environmental Research, \\
+              Leipzig, Germany
+           \and
+           S. Schelenz \at
+              Department of Monitoring and Exploration Technologies, \\
               Helmholtz Centre for Environmental Research, \\
               Leipzig, Germany
            \and
@@ -83,12 +90,12 @@
               Leipzig, Germany
            \and
            B. Zehner \at
-              Bundesanstalt f\"ur Geowissenschaften und Rohstoffe, \\
+              Federal Institute for Geosciences and Natural Resources, \\
               Hannover, Germany
            \and
-           %J. Ziesch \at
-           %   Leibniz Institute for Applied Geophysics, \\
-           %   Hannover, Germany
+           J. Ziesch \and C. Krawczyk \at
+              Leibniz Institute for Applied Geophysics, \\
+              Hannover, Germany
 }
 
 \date{Received: date / Accepted: date}
@@ -100,7 +107,7 @@
 \begin{abstract}
 Scientific visualization is an integral part of the modeling workflow, enabling researchers to understand complex or large data sets and simulation results. A high-resolution stereoscopic virtual reality (VR) environment further enhances the possibilities of visualization. Such an environment also allows to collaborate in work groups including people of different backgrounds and to present results of a research project to stakeholders or the public. The requirements for the computing equipment driving the VR environment require specialized software applications which can be run in a parallel fashion on a set of interconnected machines. Another challenge is to devise a useful data workflow from source data sets onto the display system. Therefore we develop software applications like the \emph{OpenGeoSys Data Explorer}, custom data conversion tools for established visualization packages such as \emph{ParaView} and \emph{VTK} as well as presentation and interaction techniques for 3D applications like \emph{Unity}. We demonstrate our workflow by presenting visualization results for case studies from a broad range of applications. An outlook on how visualization techniques can be deeply integrated into the simulation process is given and future technical improvements such as a simplified hardware setup are outlined.
 
-\keywords{Virtual Reality  \and  Visualization  \and  Computer Graphics \and Data Exploration \and Hydrological Processes \and OpenGeoSys \and Modeling}
+\keywords{Virtual Reality  \and  Visualization  \and  Computer Graphics \and Data Exploration \and Hydrological Processes \and Geotechnics \and Seismic Data \and OpenGeoSys \and Modeling}
 \end{abstract}
 
 %%%%%%%%%%
@@ -135,7 +142,7 @@ The \emph{TESSIN VISLab} is a high-resolution immersive virtual reality (VR) env
   presentations for the general public such as on open house events
 \end{itemize}
 
-\subsection{Technical Overview}
+\subsection{Technical overview}
 \label{technical-overview}
 
 The hardware setup of the \emph{TESSIN VISLab} uses a back projection-based stereoscopic visualization environment with an approximately 6 by 3 meter large main screen and extending projections on the floor and two side wings. In order to achieve a high resolution of approximately 6400 by 1900 pixel on the main and side screens and 3600 by 1050 pixel on the floor screen (resulting in over 10 megapixel), 13 projectors are used. Images are generated alternating for the left and the right eye and users wear special glasses which separate these images, resulting in a stereoscopic view. For the stereo separation, we can switch between two technologies -- active stereo using shutter glasses~\cite{activestereo} and passive stereo using \emph{Infitec} technology~\cite{infitec}. An optical motion tracking system~\cite{tracking} based on infrared cameras detecting passive markers on the user's 3D glasses allows to compute images such that a correct perspective is maintained and to compensate for movement of the observer. Additionally, a pointer device (\emph{Flystick}) allows for interaction with the virtual environment. The rendering is performed using a cluster with 13 workstations (one for each projector) equipped with high-end NVidia graphics processing units (GPUs) and situated in a server room next to the presentation venue. The master / server process of the actual application is started on a hardware device in front of the display that allows to control multiple machines in the server room from one keyboard, mouse and monitor (\emph{KVM switch}). Figure \ref{fig:sa}  shows that in addition to the virtual reality capabilities, the \emph{VISLab} can be employed for enhanced multimedia presentations such as the simultaneous display of images, videos and documents or a combination of 2D and 3D content. A typical use case is to present the 3D data on the main screen and additional data sets such as images, spreadsheets, maps and videos in a context-dependent way on the two side screens~\cite{zehner:2d3d}
@@ -187,20 +194,19 @@ We are both using visualization when setting up the model and simulation as well
 
 We provide utilities and \emph{ParaView} plugins to convert \emph{VTK} visualization data to formats supported by the VR frameworks used in the \emph{VISLab}, i.e.~OpenSG for \emph{VRED}~\cite{bilke:vtkosgconverter} and Autodesk FBX for \emph{Unity}~\cite{bilke:vtkfbxconverter}. Conversion can be either done manually in the \emph{OGS Data Explorer} or in a batch process by employing \emph{ParaView}'s Python scripting interface. The second approach is especially useful when converting large sequences of complex data sets such as time steps of simulation results from transient finite element models. During conversion, meta data is appended to the data sets to include information not necessarily supported in FBX such as a specific material and rendering setup or time stepping information. This meta data is evaluated when loading the data sets into Unity and can be queried, i.e.~for displaying the time stepping information as a text overlay. Multiple data sets can be arranged both in a spatial but also in a temporal context and a variety of presentation techniques (i.e. defining camera animations, fading in/out of data sets, selection of subsets, displaying additional information) are implemented, see~\cite{rink:eesenvirvis} for details.
 
-\section{Overview of VISLab Applications}
+\section{Overview of VISLab applications}
 \label{overview-of-VISLab-applications}
 
 In the following, several case studies are presented which used our visualization workflows and utilized the \emph{VISLab}. Most of them have a background in hydrology, geosciences or energy but research projects furthermore include topics in urban planning and climate prediction.
 
-\subsection{Ammer Catchment}
+\subsection{Ammer catchment}
 \label{ammer-catchment}
 
 The catchment of the river Ammer in southwest Germany has been selected as the study region for a holistic analysis of the water cycle coupled to reactive solute transport, for addressing water and solute fluxes at the catchment scale as a function of and in feedback with changes in climate, land use, and water usage~\cite{grathwohl:wessti}. The river has a length of 25\,km and is a tributary to the Neckar. Its catchment has a size of 180\,km\textsuperscript{2} with a geology comprised of a sequence of Triassic strata forming a landscape characterized by escarpments~\cite{selle:wessti}. The Ammer is mainly fed by groundwater from the karstic and fractured aquifers and drains the catchment at a rate of ca. $1\,m^3/s$.
 
-The finite-element groundwater model is based on a digital elevation model with a resolution of 100\,m in combination with interpolated subsurface layers based on the stratigraphic data of over 100 boreholes. For simulation purposes, the subsurface information has been combined into four separate layers, consisting of a part\-ly karstified limestone aquifer overlaid by Keuper-layers. In addition, the scene includes the stream network and groundwater production wells, which are employed as boundary conditions for the model as well as raster data with groundwater recharge information. Based on the results of a steady-state groundwater recharge simulation, the presentation also includes iso-surfaces representing the groundwater head as well as stream tracers for the visualization of flow paths within the catchment. See Selle et al~\cite{selle:wessti} for more information on the groundwater study and Rink et al~\cite{rink:wessti} for model setup and data visualization.
+The finite-element groundwater model is based on a digital elevation model with a resolution of 100\,m in combination with interpolated subsurface layers based on the stratigraphic data of over 100 boreholes. For simulation purposes, the subsurface information has been combined into four separate layers, consisting of a part\-ly karstified limestone aquifer overlaid by Keuper-layers. In addition, the scene includes the stream network and groundwater production wells, which are employed as boundary conditions for the model as well as raster data with groundwater recharge information. Based on the results of a steady-state groundwater recharge simulation, the presentation also includes iso-surfaces representing the groundwater head as well as stream tracers for the visualization of flow paths within the catchment. See ~\cite{selle:wessti} for more information on the groundwater study and~\cite{rink:wessti} for model setup and data visualization.
 
-\subsection{Western Dead Sea -- Sustainable Management of Water in Arid and Semi-Arid
-Regions}
+\subsection{Western Dead Sea -- Sustainable management of water in arid and semi-arid regions}
 \label{western-dead-sea---sustainable-management-of-water-in-arid-and-semi-arid-regions}
 
 \begin{figure}[htb]
@@ -225,7 +231,7 @@ Several methods were applied to localize (with remote sensing data), to quantify
 Nitrate contamination of groundwater resources is a severe environmental problem worldwide, mostly caused by extensive agriculture using large amounts of fertilizer to increase plant productivity. Nitrate has extreme long residence times in the subsurface and remediation is therefore hampered and requires costly long-term efforts. Therefore, simulation and visualization are important tools for planning and optimization of remediation scenarios. Figure \ref{fig:nankou} depicts the visualization of an OpenGeoSys subsurface model for the development of remediation setups of nitrate contaminations in China (\emph{Nankou} project) using the VR environment of the \emph{VISLab}. To present complex hydro-geological structures and results of nitrate remediation in the Nankou area to stakeholders and decision-makers of the Beijing district, 3D visualization techniques have been successfully used to foster both understanding and discussion of the invoked environmental problems within the geographical context, data availability and simulation results for the Nankou nitrate remediation project in China~\cite{sun:ees}.
 
 
-\subsection{Oman -- Saltwater Intrusion Modeling}
+\subsection{Oman -- Saltwater intrusion modeling}
 \label{oman---saltwater-intrusion}
 
 Within the project \emph{International Water Research Alliance Saxony} (IWAS), one of the main goals was to assess and evaluate water resources under various natural and human induced stress conditions. Several subprojects considered study regions in different parts of the world~\cite{kalbus:ees}.
@@ -236,13 +242,13 @@ Within the project \emph{International Water Research Alliance Saxony} (IWAS), o
 \label{fig:oman}
 \end{figure}
 
-One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process, and for the transfer of knowledge to local authorities~\cite{walther:cam, walther:eesenvirvis}. Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation~\cite{walther:modelcare}. Secondly, large data sets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was utilized~\cite{walther:eesenvirvis}.
+One of these case studies, a region scale study on density driven flow in a coastal aquifer that is used as source for agriculture irrigation, intensively made use of visualization options during model setup, verification of the variable density process~\cite{Beinhorn200589}, and for the transfer of knowledge to local authorities~\cite{walther:cam, walther:eesenvirvis}. Firstly, visualization was used to investigate plausibility of the set up hydro-geological model, that was constructed based on an extended inverse weighting distance interpolation~\cite{walther:modelcare}. Secondly, large data sets of model calibration and long term scenario simulations of the saltwater intrusion process were analyzed by utilizing \emph{ParaView}. \emph{ParaView} was run on a parallel cluster computer to omit bandwidth limitations to copy large data and to reduce computational burden on standard desktop machines. Thirdly, results of the modeling were visualized, which helped during discussions with experts and tremendously aided in knowledge transfer during a visit of Omani authorities from the Ministry of Regional Municipalities and Water Resources. Additionally, throughout all states of model development, calibration, scenario analysis, and result presentation, the \emph{VISLab} was utilized~\cite{walther:eesenvirvis}.
 
-\subsection{TERENO-Observatory Harz/Central German Lowlands}\label{tereno-bode}
+\subsection{TERENO -- Observatory Harz/Central German Lowlands}\label{tereno-bode}
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/tereno.png}
-\caption{Visualization of the Bode catchment (bold red lines) of the TERENO investigation based on a digital elevation model (DEM) including the intensive test sites, Rappbode reservoir (Rinke et al. 2012), Hohes Holz, Sauerbach, Selke catchment hosting the Sch\"afertal.}
+\caption{Visualization of the Bode catchment (bold red lines) of the TERENO investigation based on a digital elevation model (DEM) including the intensive test sites, Rappbode reservoir \cite{rinke:ees}, Hohes Holz, Sauerbach, Selke catchment hosting the Sch\"afertal.}
 \label{fig:tereno}
 \end{figure}
 
@@ -256,10 +262,10 @@ TERENO is a large-scale project aims to catalogue the longterm ecological, socia
 
 The presentation consists of over $70$ heterogeneous data sets of different scale and resolution. Most notable are surface representations, consisting of a terrain model of the whole region with over 1 mio triangles with a max edge length of 30\,m. Terrain models of the intensive test sites also exist at a much finer resolution, ranging from 30\,m for the larger regions to just 1\,m for the regions covering 1\,km\textsuperscript{2} or less. Various color transfer functions or textures can be applied to these surfaces, including elevation information, soil moisture, or indication of land use. While textures are originating from raster data, transfer functions are based on statistical data or look-up tables. Geometrical information includes the courses of streams at various resolutions and displayed with different prominence. Furthermore, the scene includes climate stations, measurement networks, bathymetries of some of the larger water bodies within the region, structural models for the subsurface of two intensive test sites, borehole data and much more. Most regional data sets are only visible when the presentation zooms in on the intensive test site they are located in, to avoid unnecessary clutter of the overall scene. Still, data integration of so many data sets acquired by different means is quite challenging. A number of different preprocessing steps were required for concurrent display and visibility of small data sets within the larger context~\cite{rink:wessti, rink:eesenvirvis}.
 
-\subsection{Mont Terri -- Geotechnical Field Laboratory}
+\subsection{Mont Terri -- Geotechnical field laboratory}
 \label{Mont Terri -- Geotechnical Field Laboratory}
 
-Visualization methods are particularly important for geoscientific applications as information is buried in the geologic subsurface. With help of modeling and visualization real pictures of the hidden underground can be generated. Figure \ref{fig:mont-terri} depicts the illustration of a tunnel system in the \emph{Mont Terri} geotechnical underground laboratory in Switzerland which is operated by a consortium of international research institutions~\cite{web:mont-terri}. In order to model thermo-hydro-mechanical-chemical (THMC) processes in host rock potentially suited for radioactive waste deposition, appropriate numerical models are required \cite{ Kolditz2004345, Shao20091287, Xie2006122}. Those numerical simulators use a geometric discretization of the domain of interest. The red lines in Fig. X show the mesh edges of a finite element discretization. Without 3D visualization techniques the analysis of mesh quality would be a very confusing task. Mesh quality is important to provide accurate results of numerical simulations.
+Visualization methods are particularly important for geoscientific applications as information is buried in the geologic subsurface. With help of modeling and visualization real pictures of the hidden underground can be generated. Figure \ref{fig:mont-terri} depicts the illustration of a tunnel system in the \emph{Mont Terri} geotechnical underground laboratory in Switzerland which is operated by a consortium of international research institutions~\cite{web:mont-terri}. In order to model thermo-hydro-mechanical-chemical (THMC) processes in host rock potentially suited for radioactive waste deposition, appropriate numerical models are required \cite{ Kolditz2004345, Shao20091287, Xie2006122}. Those numerical simulators use a geometric discretization of the domain of interest. The red lines in figure \ref{fig:mont-terri} illustrate the mesh edges of a finite element discretization. Without 3D visualization techniques the analysis of mesh quality would be a very confusing task. Mesh quality is important to provide accurate results of numerical simulations.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/mont-terri.jpg}
@@ -267,20 +273,22 @@ Visualization methods are particularly important for geoscientific applications 
 \label{fig:mont-terri}
 \end{figure}
 
-\subsection{Gro{\ss}-Sch\"onebeck -- Deep Geothermal Energy}
+\subsection{Gro{\ss}-Sch\"onebeck -- Deep geothermal energy}
 \label{grouss-schoenebeck---geothermal-energy}
 
 The Gro{\ss}-Sch\"onebeck site (50\,km north of Berlin, Germany) was established as an in situ laboratory for deep sedimentary geothermal systems. The project aims to develop drilling and stimulation technologies to access deep aquifers in the North German basin where formation temperatures are up to 150\,\celsius. Two wells have been drilled to more than 4\,km depth to form a borehole doublet in permeable porous sandstones and fractured volcanic rocks of the Lower Permian~\cite{zimmermann:geothermal}. Series of hydraulic stimulations resulted in four induced hydraulic fractures to increase the reservoir permeability. The reservoir is also surround by natural fault systems and N- to NE-striking natural faults are expected to serve as main flow path in the current stress field~\cite{bloecher:geothermal}.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/geothermal.jpg}
-\caption{Hydraulic behavior visualiztaion with streamlines and arrows representing flow path of injected water and heat transport process represented by iso-surfaces of the cooling front (about 134\,\celsius).}
+\caption{Hydraulic behavior visualization with streamlines and arrows representing flow path of injected water and heat transport process represented by iso-surfaces of the cooling front (about 134\,\celsius).}
 \label{fig:geothermal}
 \end{figure}
 
 One of the ongoing studies in the project is to analyze impacts of the fault zone permeability on reservoir dynamics and overall productivity using a numerical model. The simulated domain includes a horizontal extent of around 5\,km with maximum vertical extension of 594\,m. Based on raster data (for geological layers) and points data (forming faults, induced fractures and well paths), an unstructured grid was generated to represent the complex reservoir structure with more than one million nodes and elements. The simulation takes into account flow and heat transport processes in the reservoir over 100 years assuming injection and production rates of $18\,m^3/h$ and injection temperature of 70\,\celsius. Simulation results in case of highly conductive fault zones were visualized with 3D techniques. The visualization shown in Figure \ref{fig:geothermal} is helpful to understand three dimensional flow path in the complex reservoir structure (mainly along the faults) and subsequent reservoir cooling behavior (convection along the faults with conduction near production). See \cite{zimmermann:geothermal} and \cite{bloecher:geothermal} for more information about the Gro{\ss}-Sch\"onebeck site and the reservoir modeling and~\cite{zehner:uncertainty} for previous work on uncertainty visualization.
+%
+Numerical modeling with OGS has been used in similar case studies to analyse heat transport and induced phenomena in deep geothermal systems \cite{Kolditz1993467, McDermott2006321, Watanabe2010263}.
 
-\begin{comment}
+%\begin{comment}
 \subsection{PROTECT -- Prediction of deformation to ensure carbon traps}
 \label{otway-basin---co2-storage}
 
@@ -292,11 +300,10 @@ The first steps were the visualization of our high-resolution, geological 3D mod
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/seismic.jpg}
-\caption{ParaView running in the VISLab showing a spatial subset and cross-sections of 3D seismic data and isosurfaces of interesting features.}
+\caption{ParaView running in the VISLab showing a spatial subset and cross-sections of 3D seismic data and isosurfaces of interesting features (modified from \cite{krawczyk:deformation})}
 \label{fig:seismic}
 \end{figure}
-
-\end{comment}
+%\end{comment}
 
 
 \subsection{Thuringian Syncline -- Faults modeling}
@@ -333,7 +340,19 @@ figure~\ref{fig:ThuringianSyncline}.
 
 %\end{comment}
 
-\subsection{Climate Data}
+
+\subsection{Exploration and management strategies for shallow geothermal energy in residential sites}
+\label{shallow-geothermal}
+
+Shallow geothermal energy is a resource-saving alternative to conventional heating and cooling applications in residential buildings~\cite{haehnlein:2013}. Hence, there is a strong increase in large scale geothermal projects, e.g. providing heat for entire residential neighbourhoods~\cite{alkan:2013}. Therefore, novel strategies for shallow geothermal site exploration and management are being developed to promote the sustainable thermal uses of the subsurface. These strategies focus on the enhancement of system efficiency by optimizing system design while minimizing environmental impacts. One application example to test the novel exploration strategy is currently being investigated in an urban neighbourhood in Taucha. For 53 newly developed properties the use of shallow geothermal energy is one option to cover the heating and cooling demand. Different application scenarios are analysed (e.g. open and closed systems, heat storage) to determine induced long-term temperature difference within the soil and groundwater. Heat transport is governed by (hydro-) geological and petrophysical parameters and their variation in space. This makes reliable high resolution model parameterization essential. Three dimensional model simulations and visualizations are a basis for the comprehensive understanding of complex processes within the subsurface. Moreover, this visualization approach is an important tool to identify missing data and to prove consistency of data from different sources~\cite{vienken:2014}. In the case of the Taucha field site, it enhances understanding of temperature anomalies (e.g. heat plume formation) along borehole heat exchanger after different operating times. For instance, temperature changes in 5 to 6 m distance to the borehole heat exchanger can be evaluated, which are officially set distances to neighbouring borehole heat exchangers~\cite{haehnlein:2011}. Furthermore, the visualization is a valuable tool to support scientific outreach and enhance transfer of knowledge~(figure~\ref{fig:geothermal_shallow}). Subsurface characteristics and processes, which are usually inaccessible, are comprehensively presented to stakeholders from public and private sector. Raising awareness of the importance of a sustainable thermal use of the shallow subsurface and showing consequences of its overexploitation will promote the development of novel investigation and management strategies.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/geothermal_shallow.png}
+  \caption{Visualization of measured subsurface parameters at a field site in Taucha, Germany (two dimensional geoelectric profiles, horizontal groundwater level, temporary groundwater observation wells, and surface property borders)}
+\label{fig:geothermal_shallow}
+\end{figure}
+
+\subsection{Climate data -- Visual analysis}
 \label{climate-data}
 
 In this case study, simulation data of the \emph{Weather Research and Forecasting} (WRF) model are visualized in combination with observation data from weather stations (i.e.~amount of precipitation at a station) and time independent static data (i.e.~river networks, cities) to analyze it and detect correlations and inconsistencies. The case study area is situated in northern central Europe with an expansion of about 1,300 by 580\,km. It includes various landscapes such as the Alps, lowlands of France, and the English Channel. This area is a common domain for regional weather simulations as it is an area of propagation of frontal systems. The case shows a winter situation on the 28th of January 2012 where the air was moist and cold.
@@ -347,14 +366,14 @@ For a detailed analysis of processes such as convection and heat transport, subs
 \end{figure}
 
 
-\subsection{Pore-Scale}
+\subsection{Pore scale modeling and visualization}
 \label{pore-scale}
 
 For a detailed understanding of fluid flow behavior on the pore-scale in unconsolidated sediments simulations of the incompressible Navier-Stokes Equations were performed. The unconsolidated artificial (\emph{in-silico}) sediments were generated with the \emph{SettleDyn} software~\cite{web:SettleDyn} and prepared as input meshes for a finite volume method. The OpenFOAM simulation software~\cite{web:OpenFOAM} was used to obtain a solution of the incompressible Navier-Stokes Equations in the pore network geometry. Additionally, a particle tracking method was applied to simulate particle deposition on the grains' surfaces.
 
 For the particular realization of the randomly generated porous medium we studied the fluid flow patterns in the~pores and distribution of the sticking particles on the surfaces of the grains. Especially the local fluid-flow structures were of interest.
 
-For the visualization of multiple domain boundaries we used a two-sided material rendering technique (described in detail in~\cite{naumov:twosidedrendering}) obtaining an unobscured view on the~local fluid flow visualization simultaneously keeping the reference to the geometry. Figure~\ref{fig:porescale} depicts the particle visualization with
+For the visualization of multiple domain boundaries we used a two-sided material rendering technique (described in detail in~\cite{naumov:ees}) obtaining an unobscured view on the~local fluid flow visualization simultaneously keeping the reference to the geometry. Figure~\ref{fig:porescale} depicts the particle visualization with
 two-sided materials rendering.
 
 \begin{figure}[htb]
@@ -366,7 +385,30 @@ two-sided materials rendering.
 \end{figure}
 
 
-\subsection{Biodiversity in Rain Forests}
+\begin{comment}
+\begin{figure*}
+  \includegraphics[width=1.0\textwidth]{images/energy_storage.png}
+\caption{Paraview visualization of a calcium oxide heat store with an internal heterogeneity (displayed geometrically on the right) during discharge. The volumetric plot on the left displays the reaction rate (kilogram per second) with which the calcium oxide reacts to calcium hydroxide under consumption of water vapor from the gas phase. Arrows indicate the direction and magnitude of the gas flux. The middle plot finally represents a section through the mid-plane of the device and shows the internal temperature distribution in Kelvin. The grid at the bottom represents a porous filter.}
+\label{fig:energy_storage}
+\end{figure*}
+\end{comment}
+
+
+\subsection{Energy storage}
+\label{energy-storage}
+
+A strong coupling between non-equilibrium heat transport at high temperatures, multicomponent mass transport and thermochemical reactions as well as high gradients and nonlinearities are characteristic challenges for numerical models of thermochemical heat storage devices. Such models have been developed for OpenGeoSys in the EWI2 and NUMTHECHSTORE projects and are applied to systems based on metal hydroxides, metal oxides and microporous adsorbents \cite{Nagel2013, Shao2013}. Typically, these devices contain the material in a granular form, which is then permeated by a gas mixture with which the solid reacts under consumption or release of heat depending on the prevailing physicochemical conditions. Simulations are performed with several objectives in mind, e.g. to gain process understanding; to support material development, selection and characterization; to find optimal operation conditions; to estimate device efficiencies and identify efficiency losses.
+
+In some of the considered systems internal heterogeneities can develop. Visualization methods are a useful tool to investigate the complex flow patterns, heat transfer characteristics and chemical reaction profiles that arise as a consequence of these heterogeneities (figure \ref{fig:energy_storage}). This affords the user with an impression of limitations in mass and heat transport and can help to identify locations of, e.g., thermal losses. During cyclic operation (e.g. thermal load buffering) spatially distributed areas of increased or decreased material usage can be identified and linked to thermophysical fatigue mechanisms.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/energy_storage.png}
+  \caption{Paraview visualization of a calcium oxide heat store with an internal heterogeneity (displayed geometrically on the right) during discharge. The volumetric plot on the left displays the reaction rate (kilogram per second) with which the calcium oxide reacts to calcium hydroxide under consumption of water vapor from the gas phase. Arrows indicate the direction and magnitude of the gas flux. The middle plot finally represents a section through the mid-plane of the device and shows the internal temperature distribution in Kelvin. The grid at the bottom represents a porous filter.}
+\label{fig:energy_storage}
+\end{figure}
+
+
+\subsection{Biodiversity in rain forests}
 \label{biodiversity-in-rain-forests}
 
 The forests of the earth play an important role in the global carbon cycle. More than 50\,\% of the carbon stored in aboveground vegetation is assumed to be in the tropics~\cite{pan:carbon-sinks}. The dynamics and processes that drive these forest ecosystems are only partly understood. Knowledge about the dynamics of these ecosystems is crucial for ensuring protection and sustainable management of timber, water and other ecological services of these forests. In the working group of Andreas Huth at the Helmholtz Centre for Environmental Research (Department of Ecologial Modelling) the process-based forest growth model \emph{FORMIND}~\cite{huth:1,huth:2} is used to analyze the spatial and temporal forest dynamics by simulating recruitment, mortality and tree growth. With the help of the \emph{VISLab} we are able to visualize the forest growth from a local scale of several square meters up to several hectares. By this, we gain insights into visible and non-visible processes of the forest ecosystem as shown in figure \ref{fig:biodiversity}. Observable processes comprise landslides, fire events and tree falling, whereby invisible processes are included, for example local carbon fluxes. Besides the scientific approach of visualization, it also gives us the opportunity to easily transfer the concept of forest modeling to a broader, mostly non-scientific, community.
@@ -393,7 +435,7 @@ As a first step a workflow has been developed and a program has been implemented
 
 As a second step, we developed a scenario for how such a visualization of a landscape could be used to discuss the design of a potential windpark within this landscape~\cite{zehner:windpark}. We extended \emph{VRED}'s user interface, using the \emph{Qt} library~\cite{web:qt}, in order to allow users to navigate through the virtual landscape without getting lost and to enable them to perform simple visually driven planning tasks themselves, such as choosing wind turbines from a set of predefined types and placing it in the field while obeying constraints like the minimum distance of the turbines from each other. As a test of whether novice users could use such a system and in order to get feedback on different setups, we presented it to members of the general public at Leipzig's regional science day, giving the control of the system to the users.
 
-\subsection{Urban Environments}
+\subsection{Urban environments}
 \label{urban-environments}
 
 % TODO put on GitHub and DOI
@@ -439,14 +481,15 @@ Our current hardware setup limits the usable 3D applications to software which c
 
 
 \begin{acknowledgements}
-The intention of this work is a compilation of case studies which have been carried out in the visualization laboratory \emph{TESSIN VISLAB} over the last years comprising different disciplines in environmental sciences (without claiming completeness). The authors would like to thank Thomas Kalbacher, Karsten Rinke, Benny Selle, Feng Sun and Nico Trauth for providing some of the data sets presented in the case studies.
+The intention of this work is a compilation of case studies which have been carried out in the visualization laboratory \emph{TESSIN VISLAB} over the last years comprising different disciplines in environmental sciences (without claiming completeness). The authors would like to thank Thomas Kalbacher, Karsten Rinke, Benny Selle, Feng Sun and Nico Trauth for providing some of the data sets presented in the case studies. We thank Leslie Jakobs for the improvement of the manuscript concerning clarity and language.
 
-[UFZ-Departments] We acknowledge the participation of Departments of the Helmholtz Centre for Environmental Research UFZ in supporting several interdisciplinary case study visualizations, CATHYD (Western Jordan), CHS (Thuringian Syncline), HDG (Selke), GWS (Brasilia), MET (shallow geothermal energy), ÖSA (biodiversity), SEEFO (Rappbode reservoir) (in alphabetical order).
+We acknowledge the participation of Departments of the Helmholtz Centre for Environmental Research UFZ in supporting several interdisciplinary case study visualizations, Catchment Hydrology (CATHYD), Computational Hydrosystems (CHS), Hydrogeology (HDG), Groundwater Remediation (GWS), Monitoring and Exploration Technologies (MET), Ecosystem Analysis (OESA), Lake Research (SEEFO).
 
-[Collaboration partners] We are very grateful to our external cooperation partners for data provision and fruitful discussion to improve visualization as a practical and useful tool for applied research, BGR, GFZ, HTWK, LIAG, University of Leipzig, Technische Universität Dresden (in alphabetical order).
+We are very grateful to our external cooperation partners for data provision and fruitful discussion to improve visualization as a practical and useful tool for applied research, Federal Institute for Geosciences and Natural Resources (BGR), German Research Centre for Geosciences (GFZ), Leipzig University of Applied Sciences (HTWK), Leibniz Institute for Applied Geosciences (LIAG), University of Leipzig, Technische Universit\"at Dresden, Technische Universit\"at Freiberg.
+This work was sponsored in part by the Australian Commonwealth Government through the Cooperative Research Centre for Greenhouse Gas Technologies (CO2CRC). PROTECT is funded through the ''Geotechnologien'' Programme (grant 03G0797). We acknowledge the support by the NUMTHECHSTORE project in cooperation with the Institute of Chemical Technology, University Leipzig, and the EWI2 project in cooperation with the Institute of Technical Thermodynamics, German Aerospace Center (DLR).
 
 
-Further acknowledgments to particular project funding are referred to in the individual papers cited for the case studies presented in this article.
+Further acknowledgements to particular project funding are referred to in the individual papers cited for the case studies presented in this article.
 \end{acknowledgements}
 
 % BibTeX users please use one of
