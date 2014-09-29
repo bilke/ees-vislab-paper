@@ -306,6 +306,19 @@ The first steps were the visualization of our high-resolution, geological 3D mod
 \end{figure}
 
 
+\subsection{CO2MAN -- Visualization of a  $CO_{2}$ Sequestration Pilot Site}
+\label{co2man}
+
+In order to use fossil energy resources for power generation without contributing to the greenhouse effect, the resulting $CO_{2}$ can be separated and then stored in subsurface reservoirs without being released into the atmosphere. This overall process is called \emph{Carbon Capture and Storage} (CCS) and its feasibility is currently under scrutiny in many countries. To investigate the resulting effects on the reservoirs, several field sites have been built and/or are being used for tests, such as the Ketzin pilot site in Germany which is coordinated by the \emph{German Research Centre for Geosciences} (GFZ). As part of the BMBF funded research project \emph{CO2MAN}, simulations have been run to predict the behavior of the $CO_{2}$ in the \emph{Ketzin} reservoir, using different simulators (\emph{Eclipse}, \emph{OpenGeoSys}, \emph{TOUGHMP}) to subsequently compare the results~\cite{Kempka2013418}.
+
+In order to present the \emph{CO2MAN} project to guests in a comprehensible way and to improve communication during project meetings, we have implemented the features necessary to create a synoptic visualization that shows the geophysical measurements which are the basis for the interpretation and construction of the geometrical model together with the resulting static model, its parameterization and the simulation results. The visualization of the \emph{Ketzin} reservoir is done using the software \emph{VRED} that has been extended using \emph{OpenSG} and \emph{Qt}. The static model (e.g. horizons and borehole paths) can be exported from the geo-modeling software \emph{Gocad} directly in OpenSG format using a plugin~\cite{zehner:gocad} and so imported into \emph{VRED} without any subsequent conversion. Further, we use 3D textures for rendering 3D-seismic data by interactively slicing through the data set, and provide a user interface that allows for interactive control of these slices (see figure~\ref{fig:co2man}). The grid and the properties of the reservoir and also the simulation results can be visualized interactively, using the VTK-to-OpenSG integration that we have described in Zehner et al~\cite{zehner:uncertainty}.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{images/co2man.jpg}
+\caption{Scientists interactively explore seismic data from the Ketzin reservoir in the VISLab. The red and blue colored slices can be positioned at arbitrary locations in the data set.}
+\label{fig:co2man}
+\end{figure}
+
 \subsection{Thuringian Syncline -- Faults modeling}
 \label{thuringian-syncline---faults}
 
@@ -319,7 +332,7 @@ are depicted as green colored, wired volumes.}
 
 The \emph{INFLUINS} project investigates the movement of fluids in the subsurface in the Thuringian Syncline which covers most of the federal state Thuringia in Germany. Due to the formation history, the syncline contains many fault zones. The focus of the project is on the flow from the region of the uppermost soil layer down to the basement at depths in several kilometers including the effects of fault zones.
 
-The geological model is based on a \emph{GoCad}~\cite{web:gocad} stratigraphic grid which covers an area of $11\,800\,\textnormal{km}^2$. The west-north-west to east-south-east extent is circa $150\,\textnormal{km}^2$, the north-north-east to south-south-west is circa $80\,\textnormal{km}^2$. The geological model contains 12 stratigraphic layers and 54 fault zones. The visualization is used to get a better understanding of the course of the stratigraphic layers and faults zones in the subsurface model. For simulation purposes the challenge is to incorporate the geological model into a finite element mesh~\cite{zehner:gocad}. Also, the elements of the mesh have to meet certain quality criteria such as edge-length-ratio. Visualizations of the mesh and its quality help to identify improvable mesh areas and compare alignment to the original geological model. Therefore visualization was of great importance to verify particular steps of the simulation model setup and to check if boundary conditions were correctly incorporated into the simulation model. Furthermore the visualization is a valuable tool to interpret the simulation results of the prototype simulation model as seen in figure~\ref{fig:ThuringianSyncline}.
+The geological model is based on a \emph{GoCad}~\cite{web:gocad} stratigraphic grid which covers an area of $11\,800\,\textnormal{km}^2$. The west-north-west to east-south-east extent is circa\linebreak $150\,\textnormal{km}^2$, the north-north-east to south-south-west is circa $80\,\textnormal{km}^2$. The geological model contains 12 stratigraphic layers and 54 fault zones. The visualization is used to get a better understanding of the course of the stratigraphic layers and faults zones in the subsurface model. For simulation purposes the challenge is to incorporate the geological model into a finite element mesh~\cite{zehner:gocad}. Also, the elements of the mesh have to meet certain quality criteria such as edge-length-ratio. Visualizations of the mesh and its quality help to identify improvable mesh areas and compare alignment to the original geological model. Therefore visualization was of great importance to verify particular steps of the simulation model setup and to check if boundary conditions were correctly incorporated into the simulation model. Furthermore the visualization is a valuable tool to interpret the simulation results of the prototype simulation model as seen in figure~\ref{fig:ThuringianSyncline}.
 
 
 \subsection{Exploration and management strategies for shallow geothermal energy in residential sites}
@@ -385,11 +398,11 @@ In some of the considered systems internal heterogeneities can develop. Visualiz
 
 The forests of the earth play an important role in the global carbon cycle. More than 50\,\% of the carbon stored in aboveground vegetation is assumed to be in the tropics~\cite{pan:carbon-sinks}. The dynamics and processes that drive these forest ecosystems are only partly understood. Knowledge about the dynamics of these ecosystems is crucial for ensuring protection and sustainable management of timber, water and other ecological services of these forests. In the working group of Andreas Huth at the Helmholtz Centre for Environmental Research (Department of Ecologial Modelling) the process-based forest growth model \emph{FORMIND}~\cite{huth:1,huth:2} is used to analyze the spatial and temporal forest dynamics by simulating recruitment, mortality and tree growth. With the help of the \emph{VISLab} we are able to visualize the forest growth from a local scale of several square meters up to several hectares. By this, we gain insights into visible and non-visible processes of the forest ecosystem as shown in figure \ref{fig:biodiversity}. Observable processes comprise landslides, fire events and tree falling, whereby invisible processes are included, for example local carbon fluxes. Besides the scientific approach of visualization, it also gives us the opportunity to easily transfer the concept of forest modeling to a broader, mostly non-scientific, community.
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
   \includegraphics[width=\linewidth]{images/biodiversity.jpg}
 \caption{Visualization of a South Ecuadorian montane forest. Different tree crown colors represent the different tree species grouping used in the FORMIND model. Photo: Andr\'{e} K\"unzelmann}
 \label{fig:biodiversity}
-\end{figure*}
+\end{figure}
 
 
 \subsection{Landscape visualization and wind-park planning}
